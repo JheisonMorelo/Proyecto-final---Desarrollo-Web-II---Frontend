@@ -1,0 +1,64 @@
+/* src/app/shared/navbar/navbar.component.css */
+
+.transparent-navbar {
+  background-color: rgba(255, 255, 255, 0.7); /* Blanco con 70% de opacidad */
+  backdrop-filter: blur(5px); /* Opcional: Efecto de desenfoque detrás de la barra de navegación */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sutil sombra para dar profundidad */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transparent-navbar .navbar-brand {
+  font-family: 'Playfair Display', serif; /* Una fuente elegante para el nombre/logo */
+  font-size: 1.8rem;
+  color: #333 !important; /* Color de texto del logo, ajusta si es necesario */
+}
+
+.transparent-navbar .navbar-logo {
+  height: 40px; /* Tamaño de tu logo */
+  margin-right: 10px;
+}
+
+.transparent-navbar .nav-link {
+  color: #555 !important; /* Color de los enlaces */
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.transparent-navbar .nav-link:hover,
+.transparent-navbar .nav-link.active {
+  color: #e91e63 !important; /* Color de acento para hover y activo (rosa/fucsia típico de belleza) */
+}
+
+.transparent-navbar .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1); /* Borde sutil para el botón hamburguesa */
+}
+
+.transparent-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Estilo para el botón "Reservar Cita" */
+.transparent-navbar .btn-primary {
+  background-color: #e91e63; /* Color primario, como el de acento de los links */
+  border-color: #e91e63;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border-radius: 25px; /* Bordes redondeados */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.transparent-navbar .btn-primary:hover {
+  background-color: #d81b60; /* Un tono más oscuro al pasar el ratón */
+  border-color: #d81b60;
+}
+
+
+/* Opcional: Comportamiento al hacer scroll */
+/* Si usas la lógica de TypeScript para añadir una clase 'scrolled' */
+/*
+.transparent-navbar.scrolled {
+  background-color: rgba(255, 255, 255, 1); // Opaco al hacer scroll
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Sombra más pronunciada
+}
+*/
