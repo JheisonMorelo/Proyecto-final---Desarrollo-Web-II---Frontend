@@ -1,0 +1,19 @@
+<section class="testimonials-section py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">Lo Que Dicen Nuestros Clientes</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let testimonial of testimonials">
+        <div class="card h-100 testimonial-card border-0 shadow-sm text-center">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <img *ngIf="testimonial.imageUrl" [src]="testimonial.imageUrl" alt="{{ testimonial.author }}" class="testimonial-avatar rounded-circle mb-3 mx-auto">
+            <p class="card-text testimonial-quote mb-4">"{{ testimonial.quote }}"</p>
+            <div>
+              <h6 class="card-subtitle mb-1 text-primary testimonial-author">{{ testimonial.author }}</h6>
+              <p class="testimonial-city">{{ testimonial.city }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
