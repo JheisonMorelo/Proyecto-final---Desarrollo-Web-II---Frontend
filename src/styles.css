@@ -5,7 +5,7 @@ body {
   padding-top: 65px; /* Ajusta este valor si tu navbar tiene otra altura */
 
   /* Configuración de la imagen de fondo */
-  background-image: url('./app/assets/images/Diseño\ sin\ título.png'); /* ¡Ruta a tu imagen! */
+  background-image: url('/images/Imagen-Fondo.png'); /* ¡Ruta a tu imagen! */
   background-size: cover; /* La imagen cubrirá todo el espacio disponible */
   background-position: center; /* Centra la imagen */
   background-attachment: fixed; /* La imagen se fija y no se desplaza con el scroll */
@@ -22,20 +22,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #333; /* Color de texto por defecto para el body */
 }
-
-/* Opcional: Un ligero overlay oscuro sobre la imagen de fondo si el texto se ve mal */
-/*
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); // Un 10% de opacidad negra
-  z-index: -2; // Asegura que esté por debajo de todo el contenido
-}
-*/
 
 /* Ajuste si el navbar tiene padding-top responsivo, o si el body no tiene padding-top */
 @media (max-width: 991.98px) { /* Por debajo de 'lg' */

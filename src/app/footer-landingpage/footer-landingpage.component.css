@@ -115,3 +115,8 @@
 .footer-bottom-link:hover {
   color: #e91e63;
 }
+
+.icons_social_media {
+  max-height: 35px;
+  margin-left: 6px;
+}
