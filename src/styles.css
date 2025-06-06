@@ -2,7 +2,6 @@
 
 body {
   /* Margen superior para el fixed-top navbar */
-  padding-top: 65px; /* Ajusta este valor si tu navbar tiene otra altura */
 
   /* Configuración de la imagen de fondo */
   background-image: url('/images/Imagen-Fondo.png'); /* ¡Ruta a tu imagen! */

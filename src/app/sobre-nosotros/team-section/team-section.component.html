@@ -1,0 +1,17 @@
+<section class="py-5 team-section">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold text-dark mb-5 animate__animated animate__fadeInDown">Conoce a Nuestro Equipo de Expertos</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col animate__animated animate__zoomIn" *ngFor="let member of teamMembers; let i = index">
+                <div class="card h-100 shadow-sm border-0">
+                    <img [src]="member.image" class="card-img-top mx-auto mt-3 rounded-circle border p-1" [ngClass]="member.borderColor" [alt]="member.name + ' - ' + member.role">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-pink">{{ member.name }}</h5>
+                        <p class="card-text text-muted">{{ member.role }}</p>
+                        <p class="card-text small">{{ member.description }}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</section>

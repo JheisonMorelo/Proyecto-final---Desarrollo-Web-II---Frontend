@@ -7,10 +7,11 @@ import { RouterLink } from '@angular/router'; // Importa RouterLink para los enl
   selector: 'app-footer-landingpage-component',
   standalone: true,
   imports: [CommonModule, RouterLink], // Asegúrate de importar CommonModule y RouterLink
-  templateUrl: './footer-landingpage.component.html',
-  styleUrl: './footer-landingpage.component.css' // O .scss
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css' // O .scss
 })
-export class FooterLandingpageComponent {
+
+export class FooterComponent {
   currentYear: number;
 
   constructor() {

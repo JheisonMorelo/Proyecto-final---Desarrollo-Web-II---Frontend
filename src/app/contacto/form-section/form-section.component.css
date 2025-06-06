@@ -1,0 +1,18 @@
+.contact-form-section {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 60px 0;
+}
+
+.contact-form-section .form-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.contact-form-section .form-control:focus {
+  border-color: #FFC0CB; /* Color rosa claro en el foco */
+  box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25); /* Sombra rosa suave */
+}
+
+.text-pink {
+  color: #e91e63;
+}

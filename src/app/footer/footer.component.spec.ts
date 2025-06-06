@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterLandingpageComponent } from './footer-landingpage.component';
+import { FooterLandingpageComponent } from './footer.component';
 
 describe('FooterLandingpageComponent', () => {
   let component: FooterLandingpageComponent;
