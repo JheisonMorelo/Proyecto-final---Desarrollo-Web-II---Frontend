@@ -1,0 +1,72 @@
+/* Puedes importar el CSS común si tienes un archivo shared.css
+   @import '../../../../styles.css'; */
+
+/* Aplica los mismos estilos que en login-page.component.css */
+
+.login-register-page {
+    margin-top: 40px;
+
+}
+
+/* ... el resto de tus estilos ... */
+
+.card {
+    border: none;
+    min-width: 130vh;
+}
+
+.form-logo {
+    max-width: 100px;
+    height: auto;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+.btn-primary {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #d81b60;
+    border-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.form-floating .form-control {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    height: calc(3.5rem + 2px);
+    border-radius: 0.5rem;
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem;
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: #FFC0CB;
+    box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+}
+
+hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Puedes añadir más estilos específicos aquí si el formulario de registro necesita algo diferente */

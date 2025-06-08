@@ -1,0 +1,25 @@
+<section class="py-5 services-list-section">
+    <div class="container">
+        <h2 class="display-5 fw-bold text-center text-dark mb-5 animate__animated animate__fadeInDown">Nuestros Tratamientos</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col animate__animated animate__fadeInUp" *ngFor="let service of services; let i = index" [style.--animate-delay]="(i * 0.1) + 's'">
+                <div class="service-card h-100 shadow-sm border-0">
+                    <img [src]="service.image" class="card-img-top" [alt]="service.name">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-pink">{{ service.name }}</h5>
+                        <p class="card-text text-muted">{{ service.description }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="fw-bold fs-5 text-dark">{{ service.price }}</span>
+                            <button class="btn btn-sm btn-outline-primary">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a routerLink="/reservar" class="btn btn-primary btn-lg animate__animated animate__fadeInUp animate__delay-0-8s">
+                <i class="bi bi-calendar-check me-2"></i> Agendar Cita
+            </a>
+        </div>
+    </div>
+</section>

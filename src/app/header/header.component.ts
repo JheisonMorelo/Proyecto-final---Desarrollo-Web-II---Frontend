@@ -1,37 +1,27 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import {RouterLink } from '@angular/router';
+import { Component, HostListener, NgModule, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header-landingpage-component',
-  imports: [RouterLink],
+  imports: [RouterLink, NgbModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  isScrolled = false; // Propiedad para controlar si se ha hecho scroll
+export class HeaderComponent implements OnInit {
+
+  isScrolled: boolean = false; // Propiedad para controlar el estilo del navbar al hacer scroll
+  isMenuCollapsed: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
-    // Es buena práctica inicializar la verificación de scroll por si la página ya carga con scroll
-    this.checkScroll();
   }
 
-  // Escucha el evento 'scroll' en la ventana del navegador
+  // Listener para el evento scroll de la ventana
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
-    this.checkScroll();
-  }
-
-  checkScroll() {
-    // Define el umbral de scroll en píxeles
-    const scrollThreshold = 50; // Por ejemplo, 50px de scroll para activar el efecto
-
-    // Comprueba si el scroll vertical de la ventana es mayor que el umbral
-    if (window.pageYOffset > scrollThreshold) {
-      this.isScrolled = true;
-    } else {
-      this.isScrolled = false;
-    }
+    // Si el scroll vertical es mayor a 50px, activa el estilo 'scrolled'
+    this.isScrolled = window.pageYOffset > 50;
   }
 }
