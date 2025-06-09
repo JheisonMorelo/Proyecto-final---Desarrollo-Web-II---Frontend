@@ -1,0 +1,36 @@
+<div class="dashboard-section">
+  <h3 class="mb-4 text-pink">Nuestros Servicios</h3>
+  <div class="card p-4 shadow-sm">
+    <p class="text-muted">
+      Explora la gama completa de tratamientos y servicios que ofrecemos. Aquí podrás encontrar
+      información detallada sobre cada uno, sus beneficios y cómo pueden ayudarte a lograr tus objetivos de belleza y bienestar.
+    </p>
+
+    <div class="row mt-4">
+      <ng-container *ngIf="services.length > 0; else noServices">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let service of services">
+          <div class="card h-100 service-card">
+            <img [src]="service.imageUrl" class="card-img-top service-card-img" [alt]="service.name">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-pink">{{ service.name }}</h5>
+              <p class="card-text text-muted small">{{ service.description }}</p>
+              <p class="fw-bold">Rango de Precios: {{ service.priceRange }}</p>
+              <h6 class="mt-3">Detalles:</h6>
+              <ul class="list-unstyled small text-muted">
+                <li *ngFor="let detail of service.details"><i class="bi bi-check-circle-fill text-success me-2"></i>{{ detail }}</li>
+              </ul>
+            </div>
+            <div class="card-footer bg-white border-top-0 d-grid">
+                <a routerLink="/servicios" class="btn btn-outline-pink">Ver más detalles</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noServices>
+        <div class="col-12 text-center text-muted">
+          No hay servicios disponibles en este momento.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

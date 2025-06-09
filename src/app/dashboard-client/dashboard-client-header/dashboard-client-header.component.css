@@ -1,0 +1,17 @@
+.dashboard-header {
+  height: 70px;
+  width: 100%;
+  z-index: 1000; /* Asegura que esté por encima del contenido */
+  padding: 0 2rem;
+}
+
+.fixed-top-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.text-pink {
+    color: #e91e63;
+}

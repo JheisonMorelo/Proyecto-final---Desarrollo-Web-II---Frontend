@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { HeroLandingpageComponent } from './hero-landingpage/hero-landingpage.component';
-import { ServiciosDestacadosLandingpageComponent } from './servicios-destacados-landingpage/servicios-destacados-landingpage.component';
-import { SobreNosotrosLandingpageComponent } from './sobre-nosotros-landingpage/sobre-nosotros-landingpage.component';
-import { ClientesSatisfechosLandingpageComponent } from './clientes-satisfechos-landingpage/clientes-satisfechos-landingpage.component';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-landingpage',
-  imports: [HeroLandingpageComponent,
-      ServiciosDestacadosLandingpageComponent,
-      SobreNosotrosLandingpageComponent,
-      ClientesSatisfechosLandingpageComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })

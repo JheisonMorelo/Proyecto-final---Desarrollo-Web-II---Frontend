@@ -1,0 +1,38 @@
+<section id="featured-products" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Nuestros Productos Estrella</h2>
+    <p class="text-center text-muted mb-5">
+      Descubre nuestra selección de productos de belleza y cuidado personal,
+      cuidadosamente elegidos para complementar tus tratamientos y mejorar tu rutina diaria.
+    </p>
+
+    <div class="row justify-content-center">
+      <ng-container *ngIf="products.length > 0; else noProducts">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let product of products">
+          <div class="card h-100 product-card">
+            <img [src]="product.imageUrl" class="card-img-top product-card-img" [alt]="product.name">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-pink">{{ product.name }}</h5>
+              <p class="card-text text-muted small">{{ product.description }}</p>
+              <p class="fw-bold">Precio: {{ formatPrice(product.price) }}</p>
+              <p class="card-text small text-muted">Categoría: {{ product.category }}</p>
+              <p class="card-text small text-muted">Stock: {{ product.stock > 0 ? product.stock : 'Agotado' }}</p>
+            </div>
+            <div class="card-footer bg-white border-top-0 d-grid">
+              <a routerLink="/productos" class="btn btn-outline-pink">Ver Más</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noProducts>
+        <div class="col-12 text-center text-muted">
+          No hay productos destacados disponibles en este momento.
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="text-center mt-5">
+      <a routerLink="/productos" class="btn btn-lg btn-secondary">Explorar Todos los Productos</a>
+    </div>
+  </div>
+</section>

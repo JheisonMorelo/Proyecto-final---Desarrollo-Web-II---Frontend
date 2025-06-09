@@ -1,0 +1,33 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Color de fondo claro */
+}
+
+.dashboard-content-area {
+  display: flex;
+  flex: 1; /* Ocupa el espacio restante */
+  padding-top: 70px; /* Espacio para el dashboard-header fijo */
+}
+
+.dashboard-main-content {
+  flex-grow: 1; /* Ocupa el resto del espacio horizontal */
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  margin: 1.5rem; /* Margen alrededor del contenido principal */
+}
+
+/* Responsividad básica */
+@media (max-width: 991.98px) {
+  .dashboard-content-area {
+    flex-direction: column; /* Columna en pantallas pequeñas */
+  }
+
+  .dashboard-main-content {
+    margin: 1rem; /* Margen reducido en móvil */
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,25 @@
+.dashboard-section {
+  padding: 1rem 0;
+}
+
+.text-pink {
+  color: #e91e63;
+}
+
+.btn-primary {
+  background-color: #e91e63;
+  border-color: #e91e63;
+}
+.btn-primary:hover {
+  background-color: #d81b60;
+  border-color: #d81b60;
+}
+
+.badge {
+  padding: 0.5em 0.8em;
+  font-size: 0.75em;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #ffe0b2; /* Un rosa muy claro al pasar el mouse */
+}
