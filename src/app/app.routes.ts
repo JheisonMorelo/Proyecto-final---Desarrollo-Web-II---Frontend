@@ -19,6 +19,8 @@ import { DashboardClientEmpresaInfoComponent } from './dashboard-client/dashboar
 import { DashboardClientProductsInfoComponent } from './dashboard-client/dashboard-client-productos-info/dashboard-client-productos-info.component';
 import { DashboardClientServiciosInfoComponent } from './dashboard-client/dashboard-client-servicios-info/dashboard-client-servicios-info.component';
 import { DashboardClientTeamInfoComponent } from './dashboard-client/dashboard-client-team-info/dashboard-client-team-info.component';
+import { AuthGuard } from './guards/auth/auth.guard';
+
 
 export const routes: Routes = [
     {
