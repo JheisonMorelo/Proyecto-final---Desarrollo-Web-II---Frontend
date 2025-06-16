@@ -1,0 +1,36 @@
+.contact-info-section {
+  background-color: rgba(52, 58, 64, 0.9); /* Un fondo oscuro semitransparente */
+  padding: 80px 0;
+  color: white; /* Para el texto principal */
+}
+
+.contact-info-section .info-card {
+  background-color: rgba(255, 255, 255, 0.95); /* Blanco casi opaco para las tarjetas */
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info-section .info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info-section .info-card h4 {
+  color: #333; /* Texto oscuro para los títulos de las tarjetas */
+}
+
+.contact-info-section .info-card p {
+  color: #666; /* Texto gris para las descripciones de las tarjetas */
+}
+
+.contact-info-section .info-card a {
+  color: #666 !important; /* Asegura que los enlaces mantengan el color gris */
+}
+
+.contact-info-section .info-card a:hover {
+  color: #e91e63 !important; /* El color de acento al pasar el mouse */
+}
+
+.text-pink {
+  color: #e91e63;
+}

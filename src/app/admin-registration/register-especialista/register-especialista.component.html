@@ -1,0 +1,127 @@
+<div class="dashboard-section">
+    <h3 class="mb-4 text-pink">Registrar Nuevo Especialista</h3>
+    <div class="card p-4 shadow-sm">
+        <form [formGroup]="registerEspecialistaForm" (ngSubmit)="onSubmit()">
+            <!-- Campo: Cédula -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="especialistaCedula" placeholder="Número de Cédula"
+                    formControlName="cedula">
+                <label for="especialistaCedula">Cédula</label>
+                <div *ngIf="registerEspecialistaForm.get('cedula')?.invalid && (registerEspecialistaForm.get('cedula')?.dirty || registerEspecialistaForm.get('cedula')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('cedula')?.errors?.['required']">La cédula es requerida.</div>
+                    <div *ngIf="registerEspecialistaForm.get('cedula')?.errors?.['maxlength']">La cédula no debe exceder 20 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Nombre -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="especialistaNombre" placeholder="Nombre Completo"
+                    formControlName="nombre">
+                <label for="especialistaNombre">Nombre Completo</label>
+                <div *ngIf="registerEspecialistaForm.get('nombre')?.invalid && (registerEspecialistaForm.get('nombre')?.dirty || registerEspecialistaForm.get('nombre')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Email -->
+            <div class="mb-3 form-floating">
+                <input type="email" class="form-control" id="especialistaEmail" placeholder="Correo Electrónico"
+                    formControlName="email">
+                <label for="especialistaEmail">Correo Electrónico</label>
+                <div *ngIf="registerEspecialistaForm.get('email')?.invalid && (registerEspecialistaForm.get('email')?.dirty || registerEspecialistaForm.get('email')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                    <div *ngIf="registerEspecialistaForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                </div>
+            </div>
+            <!-- Campo: Contraseña -->
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="especialistaPassword" placeholder="Contraseña"
+                    formControlName="password">
+                <label for="especialistaPassword">Contraseña</label>
+                <div *ngIf="registerEspecialistaForm.get('password')?.invalid && (registerEspecialistaForm.get('password')?.dirty || registerEspecialistaForm.get('password')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+                    <div *ngIf="registerEspecialistaForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Confirmar Contraseña -->
+            <div class="mb-4 form-floating">
+                <input type="password" class="form-control" id="especialistaConfirmPassword" placeholder="Confirmar Contraseña"
+                    formControlName="password_confirmation">
+                <label for="especialistaConfirmPassword">Confirmar Contraseña</label>
+                <div *ngIf="registerEspecialistaForm.errors?.['mismatch'] && (registerEspecialistaForm.get('password')?.dirty || registerEspecialistaForm.get('password_confirmation')?.dirty)"
+                    class="error-message">
+                    Las contraseñas no coinciden.
+                </div>
+            </div>
+            <!-- Campo: Edad -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="especialistaEdad" placeholder="Edad"
+                    formControlName="edad">
+                <label for="especialistaEdad">Edad</label>
+                <div *ngIf="registerEspecialistaForm.get('edad')?.invalid && (registerEspecialistaForm.get('edad')?.dirty || registerEspecialistaForm.get('edad')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('edad')?.errors?.['required']">La edad es requerida.</div>
+                    <div *ngIf="registerEspecialistaForm.get('edad')?.errors?.['min']">La edad mínima es 18 años.</div>
+                    <div *ngIf="registerEspecialistaForm.get('edad')?.errors?.['max']">La edad máxima es 100 años.</div>
+                </div>
+            </div>
+            <!-- Campo: Sexo -->
+            <div class="mb-3 form-floating">
+                <select class="form-select" id="especialistaSexo" formControlName="sexo">
+                    <option value="" disabled selected>Selecciona el Sexo</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <label for="especialistaSexo">Sexo</label>
+                <div *ngIf="registerEspecialistaForm.get('sexo')?.invalid && (registerEspecialistaForm.get('sexo')?.dirty || registerEspecialistaForm.get('sexo')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('sexo')?.errors?.['required']">El sexo es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Rol (Especialista) -->
+            <div class="mb-3 form-floating">
+                <select class="form-select" id="especialistaRol" formControlName="rol">
+                    <option value="" disabled selected>Selecciona el Rol del Especialista</option>
+                    <option *ngFor="let role of especialistaRoles" [value]="role.value">{{ role.label }}</option>
+                </select>
+                <label for="especialistaRol">Rol del Especialista</label>
+                <div *ngIf="registerEspecialistaForm.get('rol')?.invalid && (registerEspecialistaForm.get('rol')?.dirty || registerEspecialistaForm.get('rol')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('rol')?.errors?.['required']">El rol es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Salario -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="especialistaSalario" placeholder="Salario"
+                    formControlName="salario">
+                <label for="especialistaSalario">Salario</label>
+                <div *ngIf="registerEspecialistaForm.get('salario')?.invalid && (registerEspecialistaForm.get('salario')?.dirty || registerEspecialistaForm.get('salario')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('salario')?.errors?.['required']">El salario es requerido.</div>
+                    <div *ngIf="registerEspecialistaForm.get('salario')?.errors?.['min']">El salario no puede ser negativo.</div>
+                </div>
+            </div>
+            <!-- Campo: Imagen de Perfil -->
+            <div class="mb-4">
+                <label for="especialistaImage" class="form-label">Imagen de Perfil</label>
+                <input type="file" class="form-control" id="especialistaImage"
+                    (change)="onFileSelected($event)" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg">
+                <div *ngIf="registerEspecialistaForm.get('urlImage')?.invalid && (registerEspecialistaForm.get('urlImage')?.dirty || registerEspecialistaForm.get('urlImage')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerEspecialistaForm.get('urlImage')?.errors?.['required']">La imagen de perfil es requerida.</div>
+                </div>
+                <small class="text-muted mt-1 d-block">Sube una imagen (JPEG, PNG, JPG, GIF, SVG, máximo 2MB).</small>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerEspecialistaForm.invalid">Registrar Especialista</button>
+            </div>
+            
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

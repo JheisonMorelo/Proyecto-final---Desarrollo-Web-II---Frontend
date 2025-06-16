@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top transparent-navbar m-2"
+     [class.scrolled]="isScrolled">
+  <div class="container-fluid">
+    <a class="navbar-brand me-auto" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <img src="/images/Logo-nav.png" alt="Estética Maria Camila" class="navbar-logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" aria-controls="navbarNavBelleza" [attr.aria-expanded]="!isMenuCollapsed" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavBelleza" [(ngbCollapse)]="isMenuCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item me-lg-3">
+          <a class="nav-link" routerLink="servicios" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Servicios</a>
+        </li>
+        <li class="nav-item me-lg-3">
+          <a class="nav-link" routerLink="productos" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Productos</a>
+        </li>
+        <li class="nav-item me-lg-3">
+          <a class="nav-link" routerLink="nosotros" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Nosotros</a>
+        </li>
+        <li class="nav-item me-lg-3">
+          <a class="nav-link" routerLink="contacto" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Contacto</a>
+        </li>
+
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="login" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="registro" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="isMenuCollapsed = true">Registrarse</a>
+        </li>
+      </ul>
+
+      <a routerLink="registro" routerLinkActive="active" class="btn btn-primary ms-lg-3 d-none d-lg-block">Registrarse</a>
+      <a routerLink="login" routerLinkActive="active" class="btn btn-primary ms-lg-3 d-none d-lg-block">Iniciar sesión</a>
+    </div>
+  </div>
+</nav>

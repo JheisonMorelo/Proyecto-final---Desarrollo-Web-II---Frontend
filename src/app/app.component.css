@@ -1,0 +1,48 @@
+/* src/styles.css */
+body {
+  padding-top: 65px; /* Ajusta según la altura final de tu navbar, 65px es un buen punto de partida */
+}
+
+/* Estilos para la sección hero - importante para ver la transparencia */
+.hero-section {
+  /* background-image: url('assets/hero-belleza.jpg'); /* **IMPORTANTE: Reemplaza con tu propia imagen** */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px; /* Altura de la sección */
+  position: relative;
+  z-index: 1; /* Asegura que esté debajo de la navbar si es necesario */
+}
+
+.hero-section::before { /* Opcional: Overlay oscuro para mejorar la legibilidad del texto */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Ligeramente oscuro */
+  z-index: -1;
+}
+
+.hero-content {
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif; /* Consistencia con la fuente del logo */
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}

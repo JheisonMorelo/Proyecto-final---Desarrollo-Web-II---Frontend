@@ -1,0 +1,170 @@
+/* src/app/shared/navbar/navbar.component.css */
+
+.transparent-navbar {
+  /* Estilos base antes de hacer scroll */
+  background-color: rgba(255, 255, 255, 0.7); /* Blanco con 70% de opacidad */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out; /* Transiciones más largas y suaves */
+  margin: 10px; /* Margen para flotar */
+  padding: 0.7rem;
+  border-radius: 10px; /* Bordes redondeados para el navbar flotante */
+  left: 10px; /* Asegura la posición desde la izquierda */
+  right: 10px; /* Asegura la posición desde la derecha */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+}
+
+/* ESTILOS DEL HEADER AL HACER SCROLL - MÁS PROFESIONALES */
+.transparent-navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95); /* Casi opaco, un blanco muy suave */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada y elevada */
+  padding: 0.5rem 1rem; /* Se encoge más notablemente */
+  border-radius: 10px; /* Opcional: si quieres que se pegue a los bordes al hacer scroll */
+
+}
+
+/* Estilos del logo */
+.navbar-logo {
+  max-width: 150px; /* Límite inicial */
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out, height 0.4s ease-in-out, max-width 0.4s ease-in-out, margin 0.4s ease-in-out; /* Más propiedades en transición */
+  cursor: pointer;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+/* ESTILOS DEL LOGO AL HACER SCROLL */
+.transparent-navbar.scrolled .navbar-logo {
+    max-width: 120px; /* Limita el ancho del logo cuando es más pequeño */
+    margin-top: 0; /* Elimina márgenes negativos al encogerse */
+    margin-bottom: 0;
+}
+
+/* Estilos base de los enlaces del menú del nav */
+.transparent-navbar .nav-link {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #555 !important;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Añadimos font-size a la transición */
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* ESTILOS DE LOS LINKS AL HACER SCROLL */
+.transparent-navbar.scrolled .nav-link {
+    font-size: 0.95rem; /* Ligeramente más pequeños */
+    padding: 0.4rem 0.8rem; /* Menor padding para ajustar al encogimiento de la barra */
+    /* Podemos hacer que los links se vean un poco más oscuros si el fondo es más claro */
+    color: #444 !important;
+}
+
+/* Estilos al pasar el mouse (hover) para los enlaces del nav */
+.transparent-navbar .nav-link:hover {
+  color: #FFC0CB !important;
+  transform: translateY(-2px);
+}
+
+/* Animación de línea inferior al pasar el mouse para los enlaces del nav */
+.transparent-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #e91e63;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.transparent-navbar .nav-link:hover::after {
+  width: calc(100% - 20px);
+}
+
+/* Estilos para el enlace activo (opcional, pero buena práctica) */
+.transparent-navbar .nav-link.active {
+  color: #e91e63 !important;
+}
+.transparent-navbar .nav-link.active::after {
+  width: calc(100% - 20px);
+  background-color: #e91e63;
+}
+
+
+/* Estilo para los botones (Registrarse, Iniciar Sesión) */
+.transparent-navbar .btn-primary {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border-radius: 25px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, padding 0.3s ease, font-size 0.3s ease; /* Más propiedades en transición */
+  cursor: pointer;
+}
+
+.transparent-navbar .btn-primary:hover {
+  background-color: #d81b60;
+  border-color: #d81b60;
+  transform: translateY(-2px);
+}
+
+/* ESTILOS DE LOS BOTONES AL HACER SCROLL */
+.transparent-navbar.scrolled .btn-primary {
+    padding: 0.4rem 1rem; /* Se encogen los botones */
+    font-size: 0.9rem; /* Fuente más pequeña */
+}
+
+
+.transparent-navbar .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Media Queries para responsividad (ajustes si es necesario) */
+@media (max-width: 991.98px) { /* Bootstrap breakpoint para 'lg' */
+  .transparent-navbar .nav-link {
+    color: #555 !important;
+    padding: 0.75rem 1rem;
+    font-size: 1rem; /* Asegura el tamaño base en móvil */
+  }
+  .transparent-navbar .nav-link:hover {
+    color: #e91e63 !important;
+    transform: none;
+  }
+  .transparent-navbar .nav-link::after {
+    display: none;
+  }
+  .navbar-logo {
+      height: 40px;
+      max-width: 100px;
+  }
+  .transparent-navbar .btn-primary {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+  }
+  /* Importante: Revertir los cambios de scroll en móvil para evitar que se vea demasiado pequeño */
+  .transparent-navbar.scrolled {
+    padding: 1rem; /* Mantiene el padding original en móvil */
+    border-radius: 10px; /* Si se usa el redondeado inicial */
+    margin: 10px;
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+  }
+  .transparent-navbar.scrolled .navbar-logo {
+    height: 40px; /* Mantiene el tamaño de logo de móvil */
+    max-width: 100px;
+  }
+  .transparent-navbar.scrolled .nav-link,
+  .transparent-navbar.scrolled .btn-primary {
+    font-size: 1rem; /* Vuelve al tamaño original en móvil */
+    padding: 0.5rem 1rem; /* Vuelve al padding original en móvil */
+  }
+}

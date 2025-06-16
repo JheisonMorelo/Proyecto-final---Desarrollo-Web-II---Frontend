@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+
+body {
+  /* Margen superior para el fixed-top navbar */
+
+  /* Configuración de la imagen de fondo */
+  background-image: url('/images/Imagen-Fondo.png'); /* ¡Ruta a tu imagen! */
+  background-size: cover; /* La imagen cubrirá todo el espacio disponible */
+  background-position: center; /* Centra la imagen */
+  background-attachment: fixed; /* La imagen se fija y no se desplaza con el scroll */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+
+  /* Color de fondo de respaldo si la imagen no carga */
+  background-color: #f0f0f0;
+
+  /* Asegúrate de que el body ocupe al menos toda la altura de la ventana */
+  min-height: 100vh;
+  margin: 0; /* Elimina el margen predeterminado del body */
+
+  /* Define las fuentes por defecto para el body */
+  font-family: 'Open Sans', sans-serif;
+  color: #333; /* Color de texto por defecto para el body */
+}
+
+/* Ajuste si el navbar tiene padding-top responsivo, o si el body no tiene padding-top */
+@media (max-width: 991.98px) { /* Por debajo de 'lg' */
+  body {
+    /* Puedes ajustar el padding-top si la navbar se hace más pequeña en móviles */
+    padding-top: 56px;
+  }
+}

@@ -1,0 +1,59 @@
+<div class="dashboard-section p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-pink mb-0">Mi Perfil</h3>
+    <button class="btn btn-primary" (click)="toggleEditMode()">
+      <i class="bi bi-pencil-square me-2"></i>{{ isEditing ? 'Ver Perfil' : 'Editar Perfil' }}
+    </button>
+  </div>
+
+  <p class="text-muted mb-4">Aquí puedes ver y gestionar la información de tu perfil.</p>
+
+  <!-- Sección de Carga/Error -->
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-pink" role="status">
+      <span class="visually-hidden">Cargando perfil...</span>
+    </div>
+    <p class="mt-2 text-muted">Cargando tu perfil, por favor espera...</p>
+  </div>
+
+  <div *ngIf="error && !loading" class="alert alert-danger text-center my-5" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Vista del Perfil (cuando no está editando) -->
+  <ng-container *ngIf="!isEditing && !loading && !error">
+    <div *ngIf="clientProfile" class="card shadow-sm rounded-lg p-4 profile-card">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+          <img [src]="clientProfile.full_image_url || 'https://placehold.co/200x200/cccccc/333333?text=Sin+Imagen'" 
+               alt="Imagen de Perfil" 
+               class="img-fluid rounded-circle profile-image border border-primary p-2 mb-3">
+          <h5 class="mb-0 text-pink">{{ clientProfile.nombre }}</h5>
+          <p class="text-muted small">{{ clientProfile.cedula }}</p>
+        </div>
+        <div class="col-md-8">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Email:</strong> {{ clientProfile.email }}</li>
+            <li class="list-group-item"><strong>Edad:</strong> {{ clientProfile.edad || 'N/A' }} años</li>
+            <li class="list-group-item"><strong>Sexo:</strong> {{ clientProfile.sexo === 'M' ? 'Masculino' : (clientProfile.sexo === 'F' ? 'Femenino' : 'N/A') }}</li>
+            <li class="list-group-item"><strong>Miembro desde:</strong> {{ clientProfile.created_at | date:'longDate' }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <button class="btn btn-outline-danger" (click)="deleteAccount()">
+          <i class="bi bi-person-x me-2"></i>Eliminar Cuenta
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Formulario de Edición del Perfil (cuando está editando) -->
+  <ng-container *ngIf="isEditing">
+    <app-client-profile-edit
+      [clientProfile]="clientProfile"
+      (profileUpdated)="onProfileUpdated()"
+      (editCancelled)="onEditCancelled()"
+    ></app-client-profile-edit>
+  </ng-container>
+</div>

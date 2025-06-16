@@ -1,0 +1,60 @@
+.dashboard-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+.btn-primary {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d81b60;
+    border-color: #d81b60;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 3px solid #e91e63 !important; /* Borde rosa */
+}
+
+.list-group-item {
+    border-color: #e9ecef;
+    padding: 0.75rem 0;
+    background-color: transparent;
+}
+
+.list-group-item:first-child { border-top-width: 0; }
+.list-group-item:last-child { border-bottom-width: 0; }

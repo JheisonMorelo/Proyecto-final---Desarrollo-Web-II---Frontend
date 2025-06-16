@@ -1,0 +1,55 @@
+<section id="all-products" class="py-5 bg-white products-list-section"> <!-- Cambié el ID para diferenciarlo de destacados -->
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">Todos Nuestros Productos</h2> <!-- Título adaptado -->
+    <p class="text-center text-muted mb-5">
+      Descubre nuestro catálogo completo de productos de belleza y cuidado personal.
+      Encuentra lo que necesitas para tu rutina de belleza.
+    </p>
+
+    <!-- Indicador de carga -->
+    <div *ngIf="loading" class="text-center my-5">
+      <div class="spinner-border text-pink" role="status">
+        <span class="visually-hidden">Cargando productos...</span>
+      </div>
+      <p class="mt-2 text-muted">Cargando productos, por favor espera...</p>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="error" class="alert alert-danger text-center my-5" role="alert">
+      {{ error }}
+    </div>
+
+    <!-- Contenido cuando la carga es exitosa y sin errores -->
+    <ng-container *ngIf="!loading && !error">
+      <div *ngIf="products.length > 0; else noProductsAvailable" class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let product of products">
+          <div class="card h-100 product-card">
+            <!-- Usar full_image_url del backend y añadir onerror -->
+            <img [src]="product.full_image_url" 
+                 class="card-img-top product-card-img" 
+                 [alt]="product.nombre"
+                 onerror="this.onerror=null; this.src='https://placehold.co/220x220/cccccc/333333?text=Producto';"
+                  loading="lazy"
+            >
+            <div class="card-body">
+              <!-- Coincidir con el nombre de la propiedad del backend -->
+              <h5 class="card-title fw-bold text-pink">{{ product.nombre }}</h5>
+              <!-- Coincidir con el nombre de la propiedad del backend -->
+              <p class="card-text text-muted small">{{ product.descripcion }}</p>
+              <p class="fw-bold">Precio: {{ formatPrice(product.precio) }}</p>
+              <!-- La categoría no está en tu modelo Producto de Laravel. Si la quieres, debe venir del backend. -->
+              <!-- <p class="card-text small text-muted">Categoría: {{ product.category }}</p> -->
+              <p class="card-text small text-muted">Stock: {{ product.stock > 0 ? product.stock : 'Agotado' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noProductsAvailable>
+        <div class="col-12 text-center text-muted my-5">
+          <p>No hay productos disponibles en este momento.</p>
+          <p>¡Vuelve pronto para ver nuestras novedades!</p>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+</section>

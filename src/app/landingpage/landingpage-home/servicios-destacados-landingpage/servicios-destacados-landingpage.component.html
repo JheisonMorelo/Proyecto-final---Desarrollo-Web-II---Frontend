@@ -1,0 +1,25 @@
+<section class="featured-services-section py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">Nuestros Servicios Destacados</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let service of services">
+        <div class="card h-100 service-card border-0 shadow-sm">
+          <!-- Modificación: Usar service.full_image_url y añadir manejador de errores -->
+          <img [src]="service.full_image_url" 
+               class="card-img-top service-img" 
+               alt="{{ service.nombre }}"
+               onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/333333?text=Sin+Imagen';"
+          >
+          <div class="card-body text-center">
+            <h5 class="card-title service-title">{{ service.nombre }}</h5>
+            <p class="card-text service-description">{{ service.descripcion }}</p>
+            <!-- Usar service.codigo para el enlace si tienes una ruta de detalle de servicio -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a routerLink="servicios" class="btn btn-lg btn-secondary-custom">Ver Todos los Servicios</a>
+    </div>
+  </div>
+</section>

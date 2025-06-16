@@ -1,0 +1,116 @@
+<div class="login-register-page d-flex align-items-center justify-content-center py-5">
+    <div class="card p-4 shadow-lg animate__animated animate__fadeInUp"
+        style="width: 100%; max-width: 480px; border-radius: 15px;">
+        <div class="text-center mb-4">
+            <img src="/images/logoEstetica.jpg" alt="Logo" class="form-logo mb-3">
+            <h2 class="card-title text-pink fw-bold mb-0">Crea tu Cuenta</h2>
+            <p class="text-muted small">Únete a la comunidad de Maria Camila Estética</p>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Campo: Nombre -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="fullNameRegister" placeholder="Tu Nombre Completo"
+                    formControlName="nombre" value="">
+                <label for="fullNameRegister">Nombre Completo</label>
+                <div *ngIf="registerForm.get('nombre')?.invalid && (registerForm.get('nombre')?.dirty || registerForm.get('nombre')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('nombre')?.errors?.['required']">El nombre completo es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Cédula (Identificación) -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="identificationRegister" placeholder="Número de Cédula"
+                    formControlName="cedula" value="">
+                <label for="identificationRegister">Número de Cédula</label>
+                <div *ngIf="registerForm.get('cedula')?.invalid && (registerForm.get('cedula')?.dirty || registerForm.get('cedula')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('cedula')?.errors?.['required']">La cédula es requerida.</div>
+                    <div *ngIf="registerForm.get('cedula')?.errors?.['maxlength']">La cédula no debe exceder 20 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Correo Electrónico -->
+            <div class="mb-3 form-floating">
+                <input type="email" class="form-control" id="emailRegister" placeholder="name@example.com"
+                    formControlName="email" value="">
+                <label for="emailRegister">Correo Electrónico</label>
+                <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                    <div *ngIf="registerForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                </div>
+            </div>
+            <!-- Campo: Edad -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="edadRegister" placeholder="Tu Edad"
+                    formControlName="edad" value="">
+                <label for="edadRegister">Edad</label>
+                <div *ngIf="registerForm.get('edad')?.invalid && (registerForm.get('edad')?.dirty || registerForm.get('edad')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('edad')?.errors?.['required']">La edad es requerida.</div>
+                    <div *ngIf="registerForm.get('edad')?.errors?.['min']">Debes tener al menos 18 años.</div>
+                    <div *ngIf="registerForm.get('edad')?.errors?.['max']">La edad máxima permitida es 100.</div>
+                </div>
+            </div>
+            <!-- Campo: Sexo -->
+            <div class="mb-3 form-floating">
+                <select class="form-select" id="sexoRegister" formControlName="sexo">
+                    <option value="" disabled selected>Selecciona tu Sexo</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <label for="sexoRegister">Sexo</label>
+                <div *ngIf="registerForm.get('sexo')?.invalid && (registerForm.get('sexo')?.dirty || registerForm.get('sexo')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('sexo')?.errors?.['required']">El sexo es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Contraseña -->
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="passwordRegister" placeholder="Contraseña"
+                    formControlName="password" value="">
+                <label for="passwordRegister">Contraseña</label>
+                <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+                    <div *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8
+                        caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Confirmar Contraseña -->
+            <div class="mb-4 form-floating">
+                <input type="password" class="form-control" id="confirmPasswordRegister"
+                    placeholder="Confirmar Contraseña" formControlName="password_confirmation" value="">
+                <label for="confirmPasswordRegister">Confirmar Contraseña</label>
+                <div *ngIf="registerForm.errors?.['mismatch'] && (registerForm.get('password')?.dirty || registerForm.get('password_confirmation')?.dirty)"
+                    class="error-message">
+                    Las contraseñas no coinciden.
+                </div>
+            </div>
+            <!-- Campo: Subir Imagen de Perfil -->
+            <div class="mb-4">
+                <label for="urlImageRegister" class="form-label">Imagen de Perfil</label>
+                <input type="file" class="form-control" id="urlImageRegister"
+                    (change)="onFileSelected($event)" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg">
+                <div *ngIf="registerForm.get('urlImage')?.invalid && (registerForm.get('urlImage')?.dirty || registerForm.get('urlImage')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerForm.get('urlImage')?.errors?.['required']">La imagen de perfil es requerida.</div>
+                </div>
+                <small class="text-muted mt-1 d-block">Sube una imagen (JPEG, PNG, JPG, GIF, SVG, máximo 2MB).</small>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerForm.invalid">Registrarse</button>
+            </div>
+            <hr class="my-4">
+            
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+            
+            <p class="text-center text-muted">¿Ya tienes cuenta?</p>
+            <div class="d-grid gap-2">
+                <a routerLink="login" class="btn btn-outline-secondary btn-lg">Iniciar Sesión</a>
+            </div>
+        </form>
+    </div>
+</div>

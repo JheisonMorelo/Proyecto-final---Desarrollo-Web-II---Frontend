@@ -1,0 +1,51 @@
+/* src/app/pages/home/about-us/about-us.component.css */
+
+.about-us-section {
+  background-color: white; /* Fondo blanco para esta sección */
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.about-image {
+  max-height: 500px; /* Limita la altura de la imagen */
+  object-fit: cover; /* Asegura que la imagen no se distorsione */
+  width: 90%; /* La imagen ocupa todo el ancho de su columna */
+}
+
+.about-text-lead {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-text-body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-btn {
+  background-color: #e91e63; /* Color de acento */
+  border-color: #e91e63;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.about-btn:hover {
+  background-color: #d81b60;
+  border-color: #d81b60;
+  transform: translateY(-2px);
+}

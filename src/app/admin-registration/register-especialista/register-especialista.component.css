@@ -1,0 +1,45 @@
+/* src/app/pages/dashboard/register-especialista/register-especialista.component.css */
+
+.dashboard-section {
+  padding: 1rem 0;
+}
+
+.text-pink {
+  color: #e91e63;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.form-floating .form-control,
+.form-floating .form-select {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+.btn-primary {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #d81b60;
+    border-color: #d81b60;
+    transform: translateY(-2px);
+}

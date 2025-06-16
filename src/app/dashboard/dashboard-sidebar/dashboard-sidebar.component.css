@@ -1,0 +1,87 @@
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background-color: #343a40 !important; /* Darker background */
+  padding-top: 1rem;
+  height: calc(100vh - 70px); /* Ocupa el resto de la altura disponible */
+  position: sticky; /* Se mantiene en la parte superior al scrollear */
+  top: 70px; /* Debajo del dashboard-header */
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.8rem 1rem;
+  transition: all 0.3s ease;
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(233, 30, 99, 0.2); /* Rosa muy claro */
+  color: white;
+}
+
+.sidebar .nav-link.active {
+  background-color: #e91e63; /* Rosa fuerte */
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar .nav-link i {
+  font-size: 1.1rem;
+}
+
+.sidebar-category {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-left: 1rem;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+/* Responsividad para el sidebar */
+@media (max-width: 991.98px) {
+  .sidebar {
+    min-width: 100%; /* Ocupa todo el ancho */
+    max-width: 100%;
+    height: auto; /* Altura automática en móvil */
+    position: relative; /* Ya no es sticky */
+    top: 0;
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .sidebar .nav {
+    flex-direction: row !important; /* Horizontales los enlaces en móvil */
+    justify-content: space-around;
+    flex-wrap: wrap; /* Permite que los enlaces se envuelvan */
+  }
+  .sidebar .nav-item {
+    margin-bottom: 0 !important;
+    flex-basis: 30%; /* Controla cuántos elementos por fila */
+    text-align: center;
+  }
+  .sidebar .nav-link {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .sidebar .nav-link i {
+    display: block; /* Icono encima del texto */
+    margin-bottom: 0.2rem;
+    margin-right: 0 !important;
+  }
+  .sidebar-category {
+    display: none; /* Oculta las categorías en móvil */
+  }
+}

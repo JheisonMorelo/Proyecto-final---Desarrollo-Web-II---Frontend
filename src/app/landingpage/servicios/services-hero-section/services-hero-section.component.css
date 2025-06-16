@@ -1,0 +1,26 @@
+.services-page-hero {
+  background-image: url('/images/services-hero.jpg'); /* ¡Asegúrate de tener esta imagen! */
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  min-height: 45vh;
+  position: relative;
+  padding-top: 80px;
+  color: white;
+}
+
+.services-page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.services-page-hero .container {
+  position: relative;
+  z-index: 1;
+}

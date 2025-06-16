@@ -1,0 +1,62 @@
+/* src/app/auth/staff-login/staff-login.component.css */
+.login-register-page {
+    margin-top: 40px;
+}
+
+.card {
+    border: none;
+    /* min-width: 130vh;  <-- Este valor es muy grande, considera ajustarlo si es para móviles/pantallas pequeñas. */
+    min-width: 400px; /* Un tamaño más razonable para el ancho mínimo de la tarjeta */
+    max-width: 420px; /* El max-width ya estaba bien en el HTML */
+}
+
+.form-logo {
+    max-width: 100px; /* Tamaño del logo */
+    height: auto;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+.btn-primary {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #d81b60;
+    border-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.form-floating .form-control,
+.form-floating .form-select { /* Añadir form-select aquí */
+    padding-top: 1.625rem; /* Ajuste para el placeholder y label flotante */
+    padding-bottom: 0.625rem;
+    height: calc(3.5rem + 2px); /* Aumentar la altura para el label flotante */
+    line-height: 1.25;
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem;
+}
+
+.error-message {
+    color: #dc3545; /* Color de error de Bootstrap */
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}

@@ -1,0 +1,115 @@
+<div class="dashboard-section">
+    <h3 class="mb-4 text-pink">Registrar Nuevo Recepcionista</h3>
+    <div class="card p-4 shadow-sm">
+        <form [formGroup]="registerRecepcionistaForm" (ngSubmit)="onSubmit()">
+            <!-- Campo: Cédula -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="recepcionistaCedula" placeholder="Número de Cédula"
+                    formControlName="cedula">
+                <label for="recepcionistaCedula">Cédula</label>
+                <div *ngIf="registerRecepcionistaForm.get('cedula')?.invalid && (registerRecepcionistaForm.get('cedula')?.dirty || registerRecepcionistaForm.get('cedula')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('cedula')?.errors?.['required']">La cédula es requerida.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('cedula')?.errors?.['maxlength']">La cédula no debe exceder 20 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Nombre -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="recepcionistaNombre" placeholder="Nombre Completo"
+                    formControlName="nombre">
+                <label for="recepcionistaNombre">Nombre Completo</label>
+                <div *ngIf="registerRecepcionistaForm.get('nombre')?.invalid && (registerRecepcionistaForm.get('nombre')?.dirty || registerRecepcionistaForm.get('nombre')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Email -->
+            <div class="mb-3 form-floating">
+                <input type="email" class="form-control" id="recepcionistaEmail" placeholder="Correo Electrónico"
+                    formControlName="email">
+                <label for="recepcionistaEmail">Correo Electrónico</label>
+                <div *ngIf="registerRecepcionistaForm.get('email')?.invalid && (registerRecepcionistaForm.get('email')?.dirty || registerRecepcionistaForm.get('email')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                </div>
+            </div>
+            <!-- Campo: Contraseña -->
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="recepcionistaPassword" placeholder="Contraseña"
+                    formControlName="password">
+                <label for="recepcionistaPassword">Contraseña</label>
+                <div *ngIf="registerRecepcionistaForm.get('password')?.invalid && (registerRecepcionistaForm.get('password')?.dirty || registerRecepcionistaForm.get('password')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Confirmar Contraseña -->
+            <div class="mb-4 form-floating">
+                <input type="password" class="form-control" id="recepcionistaConfirmPassword" placeholder="Confirmar Contraseña"
+                    formControlName="password_confirmation">
+                <label for="recepcionistaConfirmPassword">Confirmar Contraseña</label>
+                <div *ngIf="registerRecepcionistaForm.errors?.['mismatch'] && (registerRecepcionistaForm.get('password')?.dirty || registerRecepcionistaForm.get('password_confirmation')?.dirty)"
+                    class="error-message">
+                    Las contraseñas no coinciden.
+                </div>
+            </div>
+            <!-- Campo: Edad -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="recepcionistaEdad" placeholder="Edad"
+                    formControlName="edad">
+                <label for="recepcionistaEdad">Edad</label>
+                <div *ngIf="registerRecepcionistaForm.get('edad')?.invalid && (registerRecepcionistaForm.get('edad')?.dirty || registerRecepcionistaForm.get('edad')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('edad')?.errors?.['required']">La edad es requerida.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('edad')?.errors?.['min']">La edad mínima es 18 años.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('edad')?.errors?.['max']">La edad máxima es 100 años.</div>
+                </div>
+            </div>
+            <!-- Campo: Sexo -->
+            <div class="mb-3 form-floating">
+                <select class="form-select" id="recepcionistaSexo" formControlName="sexo">
+                    <option value="" disabled selected>Selecciona el Sexo</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <label for="recepcionistaSexo">Sexo</label>
+                <div *ngIf="registerRecepcionistaForm.get('sexo')?.invalid && (registerRecepcionistaForm.get('sexo')?.dirty || registerRecepcionistaForm.get('sexo')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('sexo')?.errors?.['required']">El sexo es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Salario -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="recepcionistaSalario" placeholder="Salario"
+                    formControlName="salario">
+                <label for="recepcionistaSalario">Salario</label>
+                <div *ngIf="registerRecepcionistaForm.get('salario')?.invalid && (registerRecepcionistaForm.get('salario')?.dirty || registerRecepcionistaForm.get('salario')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('salario')?.errors?.['required']">El salario es requerido.</div>
+                    <div *ngIf="registerRecepcionistaForm.get('salario')?.errors?.['min']">El salario no puede ser negativo.</div>
+                </div>
+            </div>
+            <!-- Campo: Imagen de Perfil -->
+            <div class="mb-4">
+                <label for="recepcionistaImage" class="form-label">Imagen de Perfil</label>
+                <input type="file" class="form-control" id="recepcionistaImage"
+                    (change)="onFileSelected($event)" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg">
+                <div *ngIf="registerRecepcionistaForm.get('urlImage')?.invalid && (registerRecepcionistaForm.get('urlImage')?.dirty || registerRecepcionistaForm.get('urlImage')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerRecepcionistaForm.get('urlImage')?.errors?.['required']">La imagen de perfil es requerida.</div>
+                </div>
+                <small class="text-muted mt-1 d-block">Sube una imagen (JPEG, PNG, JPG, GIF, SVG, máximo 2MB).</small>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerRecepcionistaForm.invalid">Registrar Recepcionista</button>
+            </div>
+            
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

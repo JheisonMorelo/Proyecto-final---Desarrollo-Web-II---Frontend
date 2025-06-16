@@ -1,0 +1,122 @@
+/* src/app/shared/footer/footer.component.css */
+
+.app-footer {
+  background-color: #333; /* Fondo oscuro para el footer */
+  color: #f8f9fa; /* Texto blanco o gris claro */
+  font-family: 'Open Sans', sans-serif;
+}
+
+.footer-brand {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-logo {
+  height: 60px; /* Tamaño del logo del footer */
+  max-width: 100%; /* Asegura que no se desborde */
+}
+
+.footer-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #bbb;
+  max-width: 300px; /* Limita el ancho para que el texto no sea muy largo */
+  margin: 0 auto; /* Centra el párrafo en pantallas pequeñas */
+}
+
+/* Ajuste para desktop */
+@media (min-width: 768px) {
+  .footer-description {
+    margin: 0; /* Deshacer el centrado en desktop */
+  }
+}
+
+
+.footer-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #e91e63; /* Color de acento para los títulos */
+  margin-bottom: 1.5rem;
+}
+
+.footer-links, .footer-info {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer-links li a,
+.footer-info li {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 2;
+  transition: color 0.2s ease;
+}
+
+.footer-links li a:hover {
+  color: #e91e63; /* Color de acento al pasar el ratón */
+}
+
+.footer-info li i {
+  color: #e91e63; /* Color de acento para los iconos */
+}
+
+.social-icons a {
+  color: #e91e63; /* Color de acento para los iconos de redes */
+  font-size: 1.8rem;
+  margin-right: 15px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.footer-cta-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer-cta-btn {
+  border: 2px solid #e91e63; /* Borde del color de acento */
+  color: #e91e63;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-cta-btn:hover {
+  background-color: #e91e63;
+  color: white;
+  border-color: #e91e63;
+}
+
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-bottom-text {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.footer-bottom-link {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom-link:hover {
+  color: #e91e63;
+}
+
+.icons_social_media {
+  max-height: 35px;
+  margin-left: 6px;
+}

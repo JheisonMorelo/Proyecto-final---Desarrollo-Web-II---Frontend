@@ -1,0 +1,56 @@
+<div class="dashboard-section">
+    <h3 class="mb-4 text-pink">Panel de Registro de Personal</h3>
+    <button class="btn btn-outline-secondary btn-sm" (click)="closeAdminSession()">
+        <i class="bi bi-x-circle me-2"></i>Cerrar Sesión Admin
+    </button>
+    <div class="row justify-content-center">
+        <!-- Tarjeta para Registrar Recepcionista -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 hub-card text-center shadow-sm">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="bi bi-person-badge-fill text-pink icon-lg mb-3"></i>
+                    <h5 class="card-title fw-bold">Registrar Recepcionista</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Crea una nueva cuenta para un recepcionista y gestiona su información inicial.
+                    </p>
+                    <a routerLink="registrar-recepcionista" class="btn btn-outline-pink mt-3">
+                        <i class="bi bi-plus-circle me-2"></i>Ir a Registro
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para Registrar Especialista -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 hub-card text-center shadow-sm">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="bi bi-person-workspace text-pink icon-lg mb-3"></i>
+                    <h5 class="card-title fw-bold">Registrar Especialista</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Añade un nuevo especialista con sus datos y rol específico en la clínica.
+                    </p>
+                    <a routerLink="registrar-especialista" class="btn btn-outline-pink mt-3">
+                        <i class="bi bi-plus-circle me-2"></i>Ir a Registro
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para Registrar Asistente de Ventas -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 hub-card text-center shadow-sm">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="bi bi-basket-fill text-pink icon-lg mb-3"></i>
+                    <h5 class="card-title fw-bold">Registrar Asistente de Ventas</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Registra a un asistente encargado de la gestión de ventas y productos.
+                    </p>
+                    <a routerLink="registrar-asistente-ventas" class="btn btn-outline-pink mt-3">
+                        <i class="bi bi-plus-circle me-2"></i>Ir a Registro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

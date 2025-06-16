@@ -1,0 +1,68 @@
+.product-card {
+  border: 1px solid #fce4ec; /* Rosa claro */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-img {
+  height: 220px; /* Altura fija para las imágenes del producto */
+  object-fit: contain; /* Ajusta la imagen para que quepa completamente */
+  width: 100%;
+  padding: 1rem; /* Espacio interno para la imagen */
+  border-bottom: 1px solid #eee;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.text-pink {
+  color: #e91e63; /* Color rosa principal para títulos */
+}
+
+.btn-outline-pink {
+    color: #e91e63;
+    border-color: #e91e63;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-pink:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Estilos para la sección completa si es necesario */
+#featured-products {
+  background-color: #f8f9fa; /* Fondo ligeramente gris para la sección */
+}
+
+/* Estilos para el botón "Explorar Todos los Productos" (copia de btn-secondary-custom) */
+.btn-secondary-custom {
+  background-color: #8c8c8c; /* Un gris medio para el botón general */
+  border-color: #8c8c8c;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #7a7a7a;
+  border-color: #7a7a7a;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #333;
+  margin-bottom: 3rem; /* Margen inferior para separar del contenido */
+}

@@ -1,0 +1,27 @@
+<section id="featured-products" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 section-title">Nuestros Productos Estrella</h2>
+    <div class="row justify-content-center">
+      <ng-container *ngIf="products.length > 0; else noProducts">
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let product of products">
+          <div class="card h-100 product-card">
+            <img [src]="product.full_image_url" class="card-img-top product-card-img" [alt]="product.nombre" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/333333?text=Sin+Imagen';">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-pink">{{ product.nombre }}</h5>
+              <p class="card-text text-muted small">{{ product.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noProducts>
+        <div class="col-12 text-center text-muted">
+          No hay productos destacados disponibles en este momento.
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="text-center mt-5">
+      <a routerLink="productos" class="btn btn-lg btn-secondary-custom">Explorar Todos los Productos</a>
+    </div>
+  </div>
+</section>

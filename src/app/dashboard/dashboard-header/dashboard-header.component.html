@@ -1,0 +1,9 @@
+<nav class="dashboard-header navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top-dashboard">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-pink d-none d-lg-block" href="#">
+      Dashboard <!-- Título genérico, el rol lo muestra al lado -->
+    </a>
+    <span class="ms-auto me-3 text-muted">Hola, {{ userName }} ({{ userRole | titlecase }})</span> <!-- Mostrar nombre y rol -->
+    <button class="btn btn-outline-danger" (click)="logout()">Cerrar Sesión</button> <!-- Conectar logout -->
+  </div>
+</nav>

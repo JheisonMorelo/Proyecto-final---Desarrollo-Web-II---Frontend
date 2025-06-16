@@ -1,0 +1,19 @@
+<aside class="sidebar bg-dark text-white p-3 shadow-lg">
+  <div class="sidebar-header text-center mb-4">
+    <h4 class="text-pink fw-bold">Dashboard</h4> <!-- Título genérico -->
+  </div>
+  <ul class="nav flex-column" *ngIf="visibleCategories$ | async as categories">
+    <ng-container *ngFor="let category of categories">
+      <li class="nav-item mt-4 mb-2 border-top pt-3">
+        <span class="sidebar-category">{{ category }}</span>
+      </li>
+      <ng-container *ngIf="visibleMenuItems$ | async as visibleItems">
+        <li class="nav-item mb-2" *ngFor="let item of getMenuItemsByCategory(category, visibleItems)">
+          <a class="nav-link" [routerLink]="item.routerLink" routerLinkActive="active">
+            <i class="{{ item.icon }} me-2"></i>{{ item.label }}
+          </a>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+</aside>

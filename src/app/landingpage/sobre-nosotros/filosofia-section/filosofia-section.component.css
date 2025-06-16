@@ -1,0 +1,9 @@
+/* src/app/pages/about-us-page/components/about-us-history-section/about-us-history-section.component.css */
+.bg-light-transparent {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 60px 0;
+}
+
+.text-pink {
+  color: #e91e63;
+}

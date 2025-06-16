@@ -1,0 +1,63 @@
+<section class="py-5 team-section">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold text-dark mb-5 animate__animated animate__fadeInDown">Conoce a Nuestro Equipo de Expertos</h2>
+
+        <!-- Sección para Especialistas -->
+        <h3 class="text-pink mb-4">Nuestros Especialistas</h3>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+            <div class="col animate__animated animate__zoomIn" *ngFor="let member of especialistas">
+                <div class="card h-100 shadow-sm border-0">
+                    <img [src]="member.full_image_url" 
+                         class="card-img-top mx-auto mt-3 rounded-circle border p-1" 
+                         [ngClass]="member.borderColor" 
+                         alt="{{ member.nombre + ' - ' + member.rol }}"
+                         onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/333333?text=Especialista';">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-pink">{{ member.nombre }}</h5>
+                        <p class="card-text text-muted">{{ member.rol }}</p>
+                        <p class="card-text small">Especializado en {{ member.rol }}.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección para Recepcionistas -->
+        <h3 class="text-pink mb-4">Nuestros Recepcionistas</h3>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+            <div class="col animate__animated animate__zoomIn" *ngFor="let member of recepcionistas">
+                <div class="card h-100 shadow-sm border-0">
+                    <img [src]="member.full_image_url" 
+                         class="card-img-top mx-auto mt-3 rounded-circle border p-1" 
+                         [ngClass]="member.borderColor" 
+                         alt="{{ member.nombre + ' - ' + member.rolDisplay }}"
+                         onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/333333?text=Recepcionista';">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-pink">{{ member.nombre }}</h5>
+                        <p class="card-text text-muted">{{ member.rolDisplay }}</p>
+                        <p class="card-text small">Encargada de la atención al cliente y gestión de citas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección para Asistentes de Ventas -->
+        <h3 class="text-pink mb-4">Nuestros Asistentes de Ventas</h3>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col animate__animated animate__zoomIn" *ngFor="let member of asistentesVentas">
+                <div class="card h-100 shadow-sm border-0">
+                    <img [src]="member.full_image_url" 
+                         class="card-img-top mx-auto mt-3 rounded-circle border p-1" 
+                         [ngClass]="member.borderColor" 
+                         alt="{{ member.nombre + ' - ' + member.rolDisplay }}"
+                         onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/333333?text=Asistente';">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-pink">{{ member.nombre }}</h5>
+                        <p class="card-text text-muted">{{ member.rolDisplay }}</p>
+                        <p class="card-text small">Asesoramiento experto en productos de belleza y cuidado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

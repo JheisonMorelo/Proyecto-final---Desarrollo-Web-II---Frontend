@@ -1,0 +1,115 @@
+<div class="dashboard-section">
+    <h3 class="mb-4 text-pink">Registrar Nuevo Asistente de Ventas</h3>
+    <div class="card p-4 shadow-sm">
+        <form [formGroup]="registerAsistenteVentasForm" (ngSubmit)="onSubmit()">
+            <!-- Campo: Cédula -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="asistenteVentasCedula" placeholder="Número de Cédula"
+                    formControlName="cedula">
+                <label for="asistenteVentasCedula">Cédula</label>
+                <div *ngIf="registerAsistenteVentasForm.get('cedula')?.invalid && (registerAsistenteVentasForm.get('cedula')?.dirty || registerAsistenteVentasForm.get('cedula')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('cedula')?.errors?.['required']">La cédula es requerida.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('cedula')?.errors?.['maxlength']">La cédula no debe exceder 20 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Nombre -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control" id="asistenteVentasNombre" placeholder="Nombre Completo"
+                    formControlName="nombre">
+                <label for="asistenteVentasNombre">Nombre Completo</label>
+                <div *ngIf="registerAsistenteVentasForm.get('nombre')?.invalid && (registerAsistenteVentasForm.get('nombre')?.dirty || registerAsistenteVentasForm.get('nombre')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Email -->
+            <div class="mb-3 form-floating">
+                <input type="email" class="form-control" id="asistenteVentasEmail" placeholder="Correo Electrónico"
+                    formControlName="email">
+                <label for="asistenteVentasEmail">Correo Electrónico</label>
+                <div *ngIf="registerAsistenteVentasForm.get('email')?.invalid && (registerAsistenteVentasForm.get('email')?.dirty || registerAsistenteVentasForm.get('email')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('email')?.errors?.['email']">El email no es válido.</div>
+                </div>
+            </div>
+            <!-- Campo: Contraseña -->
+            <div class="mb-3 form-floating">
+                <input type="password" class="form-control" id="asistenteVentasPassword" placeholder="Contraseña"
+                    formControlName="password">
+                <label for="asistenteVentasPassword">Contraseña</label>
+                <div *ngIf="registerAsistenteVentasForm.get('password')?.invalid && (registerAsistenteVentasForm.get('password')?.dirty || registerAsistenteVentasForm.get('password')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+                </div>
+            </div>
+            <!-- Campo: Confirmar Contraseña -->
+            <div class="mb-4 form-floating">
+                <input type="password" class="form-control" id="asistenteVentasConfirmPassword" placeholder="Confirmar Contraseña"
+                    formControlName="password_confirmation">
+                <label for="asistenteVentasConfirmPassword">Confirmar Contraseña</label>
+                <div *ngIf="registerAsistenteVentasForm.errors?.['mismatch'] && (registerAsistenteVentasForm.get('password')?.dirty || registerAsistenteVentasForm.get('password_confirmation')?.dirty)"
+                    class="error-message">
+                    Las contraseñas no coinciden.
+                </div>
+            </div>
+            <!-- Campo: Edad -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="asistenteVentasEdad" placeholder="Edad"
+                    formControlName="edad">
+                <label for="asistenteVentasEdad">Edad</label>
+                <div *ngIf="registerAsistenteVentasForm.get('edad')?.invalid && (registerAsistenteVentasForm.get('edad')?.dirty || registerAsistenteVentasForm.get('edad')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('edad')?.errors?.['required']">La edad es requerida.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('edad')?.errors?.['min']">La edad mínima es 18 años.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('edad')?.errors?.['max']">La edad máxima es 100 años.</div>
+                </div>
+            </div>
+            <!-- Campo: Sexo -->
+            <div class="mb-3 form-floating">
+                <select class="form-select" id="asistenteVentasSexo" formControlName="sexo">
+                    <option value="" disabled selected>Selecciona el Sexo</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <label for="asistenteVentasSexo">Sexo</label>
+                <div *ngIf="registerAsistenteVentasForm.get('sexo')?.invalid && (registerAsistenteVentasForm.get('sexo')?.dirty || registerAsistenteVentasForm.get('sexo')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('sexo')?.errors?.['required']">El sexo es requerido.</div>
+                </div>
+            </div>
+            <!-- Campo: Salario -->
+            <div class="mb-3 form-floating">
+                <input type="number" class="form-control" id="asistenteVentasSalario" placeholder="Salario"
+                    formControlName="salario">
+                <label for="asistenteVentasSalario">Salario</label>
+                <div *ngIf="registerAsistenteVentasForm.get('salario')?.invalid && (registerAsistenteVentasForm.get('salario')?.dirty || registerAsistenteVentasForm.get('salario')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('salario')?.errors?.['required']">El salario es requerido.</div>
+                    <div *ngIf="registerAsistenteVentasForm.get('salario')?.errors?.['min']">El salario no puede ser negativo.</div>
+                </div>
+            </div>
+            <!-- Campo: Imagen de Perfil -->
+            <div class="mb-4">
+                <label for="asistenteVentasImage" class="form-label">Imagen de Perfil</label>
+                <input type="file" class="form-control" id="asistenteVentasImage"
+                    (change)="onFileSelected($event)" accept="image/jpeg,image/png,image/jpg,image/gif,image/svg">
+                <div *ngIf="registerAsistenteVentasForm.get('urlImage')?.invalid && (registerAsistenteVentasForm.get('urlImage')?.dirty || registerAsistenteVentasForm.get('urlImage')?.touched)"
+                    class="error-message">
+                    <div *ngIf="registerAsistenteVentasForm.get('urlImage')?.errors?.['required']">La imagen de perfil es requerida.</div>
+                </div>
+                <small class="text-muted mt-1 d-block">Sube una imagen (JPEG, PNG, JPG, GIF, SVG, máximo 2MB).</small>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerAsistenteVentasForm.invalid">Registrar Asistente de Ventas</button>
+            </div>
+            
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

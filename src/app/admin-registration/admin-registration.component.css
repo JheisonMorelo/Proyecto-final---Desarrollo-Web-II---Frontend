@@ -1,0 +1,54 @@
+.dashboard-section {
+    padding: 1rem 0;
+    margin: 20px;
+}
+
+.text-pink {
+    color: #e91e63;
+}
+
+.hub-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.hub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hub-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    flex-grow: 1; /* Permite que el cuerpo crezca y llene el espacio */
+}
+
+.icon-lg {
+    font-size: 3.5rem; /* Tamaño grande para los íconos */
+    margin-bottom: 1rem;
+}
+
+.btn-outline-pink {
+    color: #e91e63;
+    border-color: #e91e63;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.btn-outline-pink:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+.card-text.flex-grow-1 {
+    flex-grow: 1; /* Permite que el texto crezca y ocupe el espacio disponible */
+    margin-bottom: 1rem; /* Espacio antes del botón */
+}

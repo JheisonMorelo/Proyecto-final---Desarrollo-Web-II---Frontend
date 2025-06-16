@@ -1,0 +1,83 @@
+<div class="card p-4 shadow-sm rounded-lg dashboard-form-card">
+  <h4 class="card-title text-center text-pink mb-4">{{ pedidoToEdit ? 'Editar Pedido' : 'Crear Nuevo Pedido' }}</h4>
+  <p class="text-muted text-center mb-4">
+    Completa los detalles de tu pedido y selecciona los productos que deseas adquirir.
+  </p>
+
+  <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+    <!-- Campo Código de Pedido - REMOVIDO PARA CLIENTE -->
+    <!-- Campo ID Cliente - REMOVIDO PARA CLIENTE -->
+    <!-- Campo ID Asistente de Ventas - REMOVIDO PARA CLIENTE -->
+    <!-- Campo Estado - REMOVIDO PARA CLIENTE (siempre "Pendiente") -->
+
+    <!-- Campo Dirección de Envío -->
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección de Envío</label>
+      <input type="text" class="form-control" id="direccion" formControlName="direccion" placeholder="Ej: Calle 123 #45-67, Ciudad">
+      <div *ngIf="f['direccion'].invalid && f['direccion'].touched" class="text-danger small mt-1">
+        <div *ngIf="f['direccion'].errors?.['required']">La dirección es requerida.</div>
+        <div *ngIf="f['direccion'].errors?.['maxlength']">La dirección no debe exceder 255 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Campo Fecha y Hora del Pedido -->
+    <div class="mb-3">
+      <label for="fechaRegistro" class="form-label">Fecha y Hora del Pedido</label>
+      <input type="datetime-local" class="form-control" id="fechaRegistro" formControlName="fechaRegistro">
+      <div *ngIf="f['fechaRegistro'].invalid && f['fechaRegistro'].touched" class="text-danger small mt-1">
+        La fecha y hora son requeridas.
+      </div>
+    </div>
+
+    <!-- Selección de Productos -->
+    <div class="mb-3">
+      <label for="productos" class="form-label">Productos a Adquirir</label>
+      <select class="form-select" id="productos" (change)="onProductSelected($event)">
+        <option value="" disabled selected>Selecciona un producto para agregar</option>
+        <option *ngFor="let producto of productosDisponibles" [value]="producto.codigo">
+          {{ producto.nombre }} ({{ formatCost(producto.precio || 0) }}) - Stock: {{ producto.stock }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Lista de Productos Seleccionados con Cantidad -->
+    <div *ngIf="selectedProducts.length > 0" class="mb-3 p-3 border rounded">
+      <h6 class="fw-bold mb-3">Productos en tu Pedido:</h6>
+      <div *ngFor="let product of selectedProducts; let i = index" class="d-flex align-items-center mb-2">
+        <span class="flex-grow-1 me-3">{{ product.nombre }} ({{ formatCost(product.precio || 0) }})</span>
+        <div class="input-group input-group-sm" style="width: 120px;">
+          <button class="btn btn-outline-secondary" type="button" (click)="product.cantidad = product.cantidad > 1 ? product.cantidad - 1 : 1; calculateTotalCost();">-</button>
+          <input type="number" class="form-control text-center" 
+                 [value]="product.cantidad" 
+                 (change)="updateProductQuantity(i, $event)" 
+                 min="1">
+          <button class="btn btn-outline-secondary" type="button" (click)="product.cantidad = product.cantidad + 1; calculateTotalCost();">+</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2" (click)="removeProduct(i)">
+          <i class="bi bi-x">Remover</i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mensaje de error para productos (usando la nueva función) -->
+    <div *ngIf="shouldShowProductSelectionError()" class="text-danger small mt-2">
+        Debes seleccionar al menos un producto.
+    </div>
+
+    <!-- Costo Total (Solo lectura, se calcula automáticamente) -->
+    <div class="mb-3">
+      <label for="costoTotal" class="form-label">Costo Total del Pedido</label>
+      <input type="text" class="form-control" id="costoTotal" [value]="formatCost(totalCostoProductos)" readonly>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+      <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+        <i class="bi bi-x-circle me-2"></i>Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save me-2"></i>{{ pedidoToEdit ? 'Actualizar Pedido' : 'Realizar Pedido' }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+<section class="py-5 choose-us-section text-center text-white">
+    <div class="container">
+        <h2 class="display-5 fw-bold mb-4 animate__animated animate__fadeInDown">¿Por Qué Elegir Estética María Camila?</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" *ngFor="let feature of features; let i = index" [style.--animate-delay]="(i * 0.2) + 's'">
+                <div class="feature-item p-4 rounded shadow-sm h-100">
+                    <i [class]="feature.icon" class="display-4 mb-3 text-pink"></i>
+                    <h4 class="fw-bold">{{ feature.title }}</h4>
+                    <p class="mb-0">{{ feature.description }}</p>
+                </div>
+            </div>
+            </div>
+    </div>
+</section>

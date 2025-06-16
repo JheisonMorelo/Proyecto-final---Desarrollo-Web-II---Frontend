@@ -1,0 +1,74 @@
+/* src/app/pages/home/featured-services/featured-services.component.css */
+
+.featured-services-section {
+  background-color: #f8f9fa; /* Un gris muy claro */
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #333;
+  margin-bottom: 3rem; /* Margen inferior para separar del contenido */
+}
+
+.service-card {
+  border-radius: 10px;
+  overflow: hidden; /* Asegura que la imagen se adapte bien */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-img {
+  height: 200px; /* Altura fija para las imágenes de las tarjetas */
+  object-fit: cover; /* Ajusta la imagen para cubrir el área sin distorsionarla */
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+}
+
+.service-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #444;
+  margin-top: 1rem;
+}
+
+.service-description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-btn {
+  color: #e91e63; /* Color de acento */
+  border-color: #e91e63;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.service-btn:hover {
+  background-color: #e91e63;
+  color: white;
+}
+
+.btn-secondary-custom {
+  background-color: #8c8c8c; /* Un gris medio para el botón general */
+  border-color: #8c8c8c;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #7a7a7a;
+  border-color: #7a7a7a;
+}
