@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiURL } from '../../variables/apiURL';
+import { PedidoInput} from '../Cita/cita-service.service';
 
 // Interfaz para el modelo Producto.
 export interface Producto {
@@ -117,7 +118,12 @@ export class PedidoService {
   }
 
   // createPedido se mantiene para personal/admin (completa)
-  createPedido(pedidoData: Omit<Pedido, 'cliente' | 'asistenteVentas' | 'productos' | 'created_at' | 'updated_at'>): Observable<ApiResponse<Pedido>> {
+  createPedido(pedidoData: PedidoInput): Observable<ApiResponse<Pedido>> {
+    return this.http.post<ApiResponse<Pedido>>(`${this.apiUrl}/pedido/create`, pedidoData, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+    createPedidoRecepcionista(pedidoData: PedidoInput): Observable<ApiResponse<Pedido>> {
     return this.http.post<ApiResponse<Pedido>>(`${this.apiUrl}/pedido/create`, pedidoData, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
@@ -130,6 +136,11 @@ export class PedidoService {
 
   // MODIFICADO: updatePedido ahora usa la interfaz PedidoUpdateInput
   updatePedido(pedidoData: PedidoUpdateInput): Observable<ApiResponse<Pedido>> {
+    return this.http.put<ApiResponse<Pedido>>(`${this.apiUrl}/pedido/update`, pedidoData, { headers: this.getHeaders() })
+      .pipe(catchError(this.handleError));
+  }
+
+  updatePedidoRecepcionista(pedidoData: PedidoUpdateInput): Observable<ApiResponse<Pedido>> {
     return this.http.put<ApiResponse<Pedido>>(`${this.apiUrl}/pedido/update`, pedidoData, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }

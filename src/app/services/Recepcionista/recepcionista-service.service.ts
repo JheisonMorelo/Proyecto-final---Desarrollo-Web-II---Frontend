@@ -35,24 +35,33 @@ export class RecepcionistaService {
       );
   }
 
-    /**
-   * Obtiene el perfil del recepcionista autenticado.
-   */
+  /**
+ * Obtiene el perfil del recepcionista autenticado.
+ */
   getAuthenticatedRecepcionistaProfile(): Observable<ApiResponse<Recepcionista>> {
-    return this.http.get<ApiResponse<Recepcionista>>(`${this.apiUrl}/recepcionista/perfil`, { headers: this.getHeaders() })
+    return this.http.get<ApiResponse<Recepcionista>>(`${this.apiUrl}/recepcionista/perfil`, { headers: this.getAuthHeadersForFileUpload() })
       .pipe(
         catchError(this.handleError)
       );
   }
 
-    /**
-   * Actualiza el perfil del recepcionista autenticado.
-   * Recibe FormData directamente para manejar la imagen.
-   * @param formData Los datos del perfil en formato FormData.
-   * @param headers Los HttpHeaders que incluyen el token de autorización.
-   */
+
+  private getAuthHeadersForFileUpload(): HttpHeaders {
+    const token = localStorage.getItem('authToken');
+    return new HttpHeaders({
+      'Accept': 'application/json', // Aceptar JSON como respuesta
+      ...(token && { 'Authorization': `Bearer ${token}` }) // Añadir token de autorización
+    });
+  }
+
+  /**
+ * Actualiza el perfil del recepcionista autenticado.
+ * Recibe FormData directamente para manejar la imagen.
+ * @param formData Los datos del perfil en formato FormData.
+ * @param headers Los HttpHeaders que incluyen el token de autorización.
+ */
   updateAuthenticatedRecepcionistaProfile(formData: FormData, headers: HttpHeaders): Observable<ApiResponse<Recepcionista>> {
-    return this.http.put<ApiResponse<Recepcionista>>(`${this.apiUrl}/recepcionista/update-perfil`, formData, { headers: headers })
+    return this.http.put<ApiResponse<Recepcionista>>(`${this.apiUrl}/recepcionista/update-perfil`, formData, { headers: this.getAuthHeadersForFileUpload() })
       .pipe(
         catchError(this.handleError)
       );
@@ -62,7 +71,7 @@ export class RecepcionistaService {
    * Elimina la cuenta del recepcionista autenticado.
    */
   deleteAuthenticatedRecepcionistaAccount(): Observable<ApiResponse<any>> {
-    return this.http.delete<ApiResponse<any>>(`${this.apiUrl}/recepcionista/eliminar-cuenta`, { headers: this.getHeaders() })
+    return this.http.delete<ApiResponse<any>>(`${this.apiUrl}/recepcionista/eliminar-cuenta`, { headers: this.getAuthHeadersForFileUpload() })
       .pipe(
         catchError(this.handleError)
       );

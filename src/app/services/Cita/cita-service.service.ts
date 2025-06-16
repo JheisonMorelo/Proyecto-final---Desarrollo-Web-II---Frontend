@@ -110,6 +110,56 @@ export interface ClientCitaInput {
     servicio_codigos: string[];
 }
 
+// -------------------------------------------------------------
+// NUEVAS INTERFACES PARA PEDIDOS
+// -------------------------------------------------------------
+
+// Define la estructura para un producto dentro de un pedido (pivot data)
+export interface PedidoProducto {
+  producto_codigo: string; // El código del producto
+  cantidad: number;        // La cantidad de este producto en el pedido
+  producto?: Producto;     // Opcional: Detalles completos del producto si se cargan con el pedido
+}
+
+// Interfaz para el modelo Pedido
+export interface Pedido {
+  codigo: string;
+  idCliente: string;
+  idAsistente: string; // Cédula del asistente de ventas que generó el pedido
+  fechaPedido: string;
+  estado: 'Pendiente' | 'Completado' | 'Cancelado' | 'En Proceso' | 'Enviado'; // Estados posibles
+  costoTotal: number;
+  direccion: string;
+  fechaRegistro: string;
+  // Relaciones (opcionales, se cargan si el backend las incluye)
+  cliente?: Cliente;
+  asistente?: AsistenteVentas;
+  productos?: PedidoProducto[]; // Lista de productos en el pedido, con cantidad
+  created_at?: string;
+  updated_at?: string;
+}
+
+// Interfaz para el payload de creación de pedido por el Asistente de Ventas
+export interface PedidoInput {
+  codigo: string; // Generado por el frontend (UUID)
+  idCliente: string;
+  // idAsistente no se envía desde el frontend si el backend lo obtiene del token
+  fechaPedido: string;
+  estado: 'Pendiente' | 'Completado' | 'Cancelado' | 'En Proceso' | 'Enviado';
+  productos: { producto_codigo: string; cantidad: number }[]; // Array de productos con sus cantidades
+}
+
+// Interfaz para el payload de actualización de pedido
+export interface PedidoUpdateInput {
+  codigo: string; // Requerido para identificar el pedido a actualizar
+  idCliente?: string;
+  idAsistente?: string; // Podría cambiarse o no, depende de la lógica
+  fechaPedido?: string;
+  costoTotal?: number;
+  estado?: 'Pendiente' | 'Completado' | 'Cancelado' | 'En Proceso' | 'Enviado';
+  productos?: { producto_codigo: string; cantidad: number }[];
+}
+
 // Interfaz para la respuesta estándar de la API de Laravel
 // Ahora exportada para que todos los servicios la puedan usar.
 export interface ApiResponse<T> {

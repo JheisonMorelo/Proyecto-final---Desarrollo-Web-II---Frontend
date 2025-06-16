@@ -1,1 +1,78 @@
-<p>gestionar-servicios works!</p>
+<div class="gestion-servicios-container p-4">
+  <h2 class="text-pink-600 mb-6 text-2xl font-bold text-center">Gestión de Servicios</h2>
+
+  <!-- Sección del formulario para agregar/editar servicios -->
+  <div *ngIf="showServicioForm" class="mb-6">
+    <app-servicio-form 
+      [servicioToEdit]="servicioToEdit"
+      (formSubmitted)="onServicioFormSubmitted()"
+      (formCancelled)="onServicioFormCancelled()">
+    </app-servicio-form>
+  </div>
+
+  <!-- Botón para agregar nuevo servicio (visible solo si no se está mostrando el formulario) -->
+  <div class="flex justify-center mb-6" *ngIf="!showServicioForm && userRole === 'recepcionista'">
+    <button class="btn-add-service bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+            (click)="addNewServicio()">
+      <i class="bi bi-plus-circle-fill text-xl"></i>
+      <span>Agregar Nuevo Servicio</span>
+    </button>
+  </div>
+
+  <!-- Mensajes de estado -->
+  <div *ngIf="loading" class="text-center text-gray-600 text-lg my-8">
+    <div class="spinner-border text-pink-600" role="status">
+    </div>
+    <p>Cargando servicios...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center my-8">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error && servicios.length === 0" class="text-center text-gray-500 my-8">
+    <p class="text-xl">No hay servicios registrados aún.</p>
+    <p class="text-md">¡Haz clic en "Agregar Nuevo Servicio" para empezar!</p>
+  </div>
+
+  <!-- Rejilla de Tarjetas de Servicios -->
+  <div *ngIf="servicios.length > 0 && !showServicioForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let servicio of servicios" 
+         class="service-card bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-200">
+      
+      <!-- Imagen del Servicio -->
+      <img [src]="servicio.full_image_url || getPlaceholderImage(600, 400)" 
+           [alt]="'Imagen de ' + servicio.nombre" 
+           class="w-full h-48 object-cover rounded-t-lg" 
+           onerror="this.onerror=null; this.src=getPlaceholderImage(600,400);" /> 
+      
+      <!-- Contenido de la Tarjeta -->
+      <div class="p-4 flex flex-col justify-between h-auto">
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 mb-1">{{ servicio.nombre }}</h3>
+          <p class="text-pink-600 font-extrabold text-lg mb-2">
+            {{ servicio.precio | currency:'COP':'symbol':'1.0-0' }}
+          </p>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3"> <!-- line-clamp-3 para truncar descripciones -->
+            {{ servicio.descripcion || 'Sin descripción disponible.' }}
+          </p>
+          <p class="text-gray-500 text-xs mb-3">Código: {{ servicio.codigo }}</p>
+        </div>
+        
+        <!-- Botones de Acción -->
+        <div class="flex justify-end space-x-3 mt-auto"> <!-- mt-auto para empujar al fondo -->
+          <button class="btn-edit bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full text-sm flex items-center space-x-1 transition-colors duration-200"
+                  (click)="editServicio(servicio)">
+            <i class="bi bi-pencil-square"></i>
+            <span>Editar</span>
+          </button>
+          <button class="btn-delete bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full text-sm flex items-center space-x-1 transition-colors duration-200"
+                  (click)="deleteServicio(servicio.codigo, servicio.nombre)">
+            <i class="bi bi-trash"></i>
+            <span>Eliminar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

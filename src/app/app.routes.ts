@@ -25,6 +25,8 @@ import { PersonalLoginComponent } from './registro_y_login_personal/personal-log
 import { AdminRegistrationComponent } from './admin-registration/admin-registration.component';
 import { ClientProfileViewComponent } from './dashboard/client-profile/client-profile.component';
 import { GestionarCitasComponent } from './dashboard/gestionar-citas/gestionar-citas.component';
+import { GestionarServicioComponent } from './dashboard/gestionar-servicios/gestionar-servicios.component';
+import { RecepcionistaProfileComponent } from './dashboard/recepcionista-profile/recepcionista-profile.component';
 
 
 export const routes: Routes = [
@@ -51,7 +53,9 @@ export const routes: Routes = [
       { path: 'mis-citas', component: DashboardClientCitasComponent },
       { path: 'mis-pedidos', component: DashboardClientPedidosComponent },
       { path: 'mi-perfil-client', component: ClientProfileViewComponent},
+      { path: 'mi-perfil-recepcionista', component: RecepcionistaProfileComponent },
       { path: 'gestionar-citas', component: GestionarCitasComponent },
+      { path: 'gestionar-servicios', component: GestionarServicioComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ],
   },

@@ -1,0 +1,153 @@
+<div class="profile-container bg-white p-6 rounded-lg shadow-xl mb-8">
+  <h2 class="text-pink-600 text-3xl font-extrabold mb-6 text-center">
+    <i class="bi bi-person-circle me-3"></i> Perfil del Recepcionista
+  </h2>
+
+  <div *ngIf="loading" class="text-center text-gray-600 text-lg my-8">
+    <div class="spinner-border text-pink-600" role="status">
+      <span class="sr-only">Cargando perfil...</span>
+    </div>
+    <p>Cargando perfil...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center my-8">
+    {{ error }}
+  </div>
+
+  <div *ngIf="recepcionistaData && !loading && !error">
+    <!-- Vista del Perfil (Modo No Edición) -->
+    <div *ngIf="!isEditMode" class="profile-view grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="text-center md:text-left">
+        <img [src]="recepcionistaData.full_image_url || getPlaceholderImage(recepcionistaData.sexo)" 
+             alt="Imagen de Perfil" 
+             class="profile-image mx-auto md:mx-0 w-32 h-32 rounded-full object-cover border-4 border-pink-500 shadow-md mb-4"/>
+        <h3 class="text-2xl font-bold text-gray-900">{{ recepcionistaData.nombre }}</h3>
+        <p class="text-gray-600 text-lg">{{ recepcionistaData.email }}</p>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-item mb-3">
+          <strong class="text-gray-700 block">Cédula:</strong>
+          <span class="text-gray-800 text-lg">{{ recepcionistaData.cedula }}</span>
+        </div>
+        <div class="detail-item mb-3">
+          <strong class="text-gray-700 block">Edad:</strong>
+          <span class="text-gray-800 text-lg">{{ recepcionistaData.edad || 'N/A' }}</span>
+        </div>
+        <div class="detail-item mb-3">
+          <strong class="text-gray-700 block">Sexo:</strong>
+          <span class="text-gray-800 text-lg">{{ recepcionistaData.sexo || 'N/A' }}</span>
+        </div>
+        <div class="detail-item mb-3">
+            <strong class="text-gray-700 block">Salario:</strong>
+            <span class="text-gray-800 text-lg">{{ recepcionistaData.salario | currency:'COP':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="detail-item">
+          <strong class="text-gray-700 block">Miembro desde:</strong>
+          <span class="text-gray-800 text-lg">{{ recepcionistaData.created_at | date:'mediumDate' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario de Edición del Perfil (Modo Edición) -->
+    <div *ngIf="isEditMode" class="profile-edit-form">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Vista previa de la imagen actual/nueva -->
+        <div class="mb-5 text-center">
+          <img [src]="imagePreviewUrl || getPlaceholderImage(recepcionistaData.sexo)" 
+               alt="Previsualización de Perfil" 
+               class="profile-image-edit mx-auto w-32 h-32 rounded-full object-cover border-4 border-pink-500 shadow-md mb-4"/>
+          <button *ngIf="imagePreviewUrl" type="button" class="btn btn-sm btn-outline-danger mt-2 rounded-full" (click)="removeImagePreview()">
+            <i class="bi bi-x-circle me-1"></i> Quitar Imagen
+          </button>
+        </div>
+
+        <!-- Campo Cédula (Solo Lectura) -->
+        <div class="mb-4">
+          <label for="cedula" class="form-label">Cédula</label>
+          <input type="text" id="cedula" class="form-control rounded-md bg-gray-100 cursor-not-allowed" 
+                 [value]="recepcionistaData.cedula" readonly>
+        </div>
+
+        <!-- Campo Nombre -->
+        <div class="mb-4">
+          <label for="nombre" class="form-label">Nombre Completo <span class="text-danger">*</span></label>
+          <input type="text" id="nombre" formControlName="nombre" class="form-control rounded-md"
+                 [ngClass]="{ 'is-invalid': f['nombre'].invalid && (f['nombre'].dirty || f['nombre'].touched) }">
+          <div *ngIf="f['nombre'].invalid && (f['nombre'].dirty || f['nombre'].touched)" class="invalid-feedback">
+            El nombre es requerido.
+          </div>
+        </div>
+
+        <!-- Campo Email -->
+        <div class="mb-4">
+          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+          <input type="email" id="email" formControlName="email" class="form-control rounded-md"
+                 [ngClass]="{ 'is-invalid': f['email'].invalid && (f['email'].dirty || f['email'].touched) }">
+          <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="invalid-feedback">
+            El email es requerido y debe ser válido.
+          </div>
+        </div>
+
+        <!-- Campo Edad -->
+        <div class="mb-4">
+          <label for="edad" class="form-label">Edad</label>
+          <input type="number" id="edad" formControlName="edad" class="form-control rounded-md"
+                 [ngClass]="{ 'is-invalid': f['edad'].invalid && (f['edad'].dirty || f['edad'].touched) }">
+          <div *ngIf="f['edad'].invalid && (f['edad'].dirty || f['edad'].touched)" class="invalid-feedback">
+            La edad debe ser entre 18 y 100 años.
+          </div>
+        </div>
+
+        <!-- Campo Sexo -->
+        <div class="mb-4">
+          <label for="sexo" class="form-label">Sexo</label>
+          <select id="sexo" formControlName="sexo" class="form-select rounded-md">
+            <option value="">Selecciona</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <!-- Campo Salario -->
+        <div class="mb-4">
+            <label for="salario" class="form-label">Salario</label>
+            <input type="number" id="salario" formControlName="salario" class="form-control rounded-md"
+                   [ngClass]="{ 'is-invalid': f['salario'].invalid && (f['salario'].dirty || f['salario'].touched) }">
+            <div *ngIf="f['salario'].invalid && (f['salario'].dirty || f['salario'].touched)" class="invalid-feedback">
+              El salario debe ser un número positivo.
+            </div>
+          </div>
+
+        <!-- Carga de Nueva Imagen -->
+        <div class="mb-5">
+          <label for="urlImage" class="form-label">Cambiar Imagen de Perfil</label>
+          <input type="file" id="urlImage" class="form-control rounded-md" (change)="onFileSelected($event)" accept="image/*">
+          <small class="text-gray-500 mt-2 block">Selecciona un archivo para cambiar tu foto de perfil.</small>
+        </div>
+
+        <!-- Botones de Acción para el Formulario de Edición -->
+        <div class="flex justify-end space-x-3">
+          <button type="button" class="btn btn-secondary rounded-full py-2 px-5 transition-colors" (click)="toggleEditMode()">Cancelar</button>
+          <button type="submit" class="btn btn-primary rounded-full py-2 px-5 transition-colors">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Botones de Acción Generales (fuera del formulario de edición) -->
+    <div *ngIf="!isEditMode" class="flex flex-col sm:flex-row justify-center sm:justify-end space-y-3 sm:space-y-0 sm:space-x-4 mt-8 pt-4 border-t border-gray-200">
+      <button class="btn-edit-profile bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md transition-colors duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+              (click)="toggleEditMode()">
+        <i class="bi bi-pencil-square"></i>
+        <span>Editar Perfil</span>
+      </button>
+      <button class="btn-delete-account bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-md transition-colors duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+              (click)="deleteAccount()">
+        <i class="bi bi-person-x"></i>
+        <span>Eliminar Cuenta</span>
+      </button>
+    </div>
+  </div>
+</div>

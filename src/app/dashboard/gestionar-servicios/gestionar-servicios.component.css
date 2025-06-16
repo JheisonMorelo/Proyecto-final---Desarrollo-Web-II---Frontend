@@ -1,0 +1,187 @@
+/* src/app/pages/dashboard/gestionar-servicios/gestionar-servicios.component.css */
+
+.gestion-servicios-container {
+  padding: 20px;
+  max-width: 1200px; /* Ancho máximo para la rejilla */
+  margin: 0 auto; /* Centrar el contenedor */
+}
+
+.text-pink-600 {
+  color: #e91e63 !important; /* Rosa fuerte, consistente con tu app */
+}
+
+/* Estilo para el botón flotante/de añadir */
+.btn-add-service {
+  display: inline-flex; /* Para alinear icono y texto */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espacio entre icono y texto */
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 9999px; /* Para hacerlo completamente redondeado (pill shape) */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-add-service:hover {
+  background-color: #d81b60;
+  border-color: #d81b60;
+  transform: scale(1.05); /* Efecto de "pop" al pasar el ratón */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  
+}
+
+.btn-add-service i {
+  font-size: 1.5rem; /* Tamaño del icono */
+}
+
+
+/* Estilos para las tarjetas de servicio */
+.service-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem; /* rounded-lg en Tailwind */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md en Tailwind */
+  transition: box-shadow 0.3s ease;
+  overflow: hidden; /* Asegura que la imagen tenga bordes redondeados */
+  display: flex;
+  flex-direction: column; /* Coloca la imagen arriba, contenido abajo */
+}
+
+.service-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl en Tailwind */
+  transform: scale(1.03); /* Efecto de "pop" al pasar el ratón */
+  transition: 0.4s;
+}
+
+.service-card img {
+  width: 100%;
+  height: 12rem; /* h-48 en Tailwind, altura fija para uniformidad */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.service-card .p-4 {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+}
+
+.service-card h3 {
+  font-size: 1.25rem; /* text-xl en Tailwind */
+  font-weight: bold; /* font-bold en Tailwind */
+  color: #374151; /* gray-800 en Tailwind */
+  margin-bottom: 0.25rem; /* mb-1 en Tailwind */
+}
+
+.service-card p {
+  color: #4b5563; /* gray-600 en Tailwind */
+  font-size: 0.875rem; /* text-sm en Tailwind */
+  margin-bottom: 1rem; /* mb-4 en Tailwind */
+}
+
+.service-card .line-clamp-3 {
+    /* Implementación de line-clamp para truncar texto después de 3 líneas */
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.service-card .text-xs {
+    font-size: 0.75rem;
+}
+
+/* Botones de acción dentro de la tarjeta */
+.service-card .btn-edit,
+.service-card .btn-delete {
+  font-size: 0.875rem; /* text-sm en Tailwind */
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 en Tailwind */
+  border-radius: 15px; /* rounded-full en Tailwind */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem; /* space-x-1 en Tailwind */
+  margin: 5px
+}
+
+.service-card .btn-edit {
+  background-color: #3b82f6; /* blue-500 en Tailwind */
+  color: white;
+}
+.service-card .btn-edit:hover {
+  background-color: #2563eb; /* blue-600 en Tailwind */
+}
+
+.service-card .btn-delete {
+  background-color: #ef4444; /* red-500 en Tailwind */
+  color: white;
+}
+.service-card .btn-delete:hover {
+  background-color: #dc2626; /* red-600 en Tailwind */
+}
+
+/* Spinner de carga (Bootstrap classes) */
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: .75s linear infinite spinner-border;
+  animation: .75s linear infinite spinner-border;
+}
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
+/* Clases de rejilla (Tailwind CSS) */
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.gap-6 { gap: 1.5rem; }
+
+/* Responsive grid */
+@media (min-width: 640px) { /* sm breakpoint */
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Utilidades varias de espaciado y texto */
+.my-8 { margin-top: 2rem; margin-bottom: 2rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mt-auto { margin-top: auto; } /* Para empujar los botones al fondo de la tarjeta */
+.flex { display: flex; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.items-center { align-items: center; }
+.space-x-1 > :not([hidden]) ~ :not([hidden]) { margin-right: calc(0.25rem * var(--tw-space-x-reverse)); margin-left: calc(0.25rem * (1 - var(--tw-space-x-reverse))); }
+.space-x-3 > :not([hidden]) ~ :not([hidden]) { margin-right: calc(0.75rem * var(--tw-space-x-reverse)); margin-left: calc(0.75rem * (1 - var(--tw-space-x-reverse))); }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-gray-500 { color: #6b7280; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-800 { color: #1f2937; }
+.text-white { color: #ffffff; }
+.overflow-hidden { overflow: hidden; }
+.relative { position: relative; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.transition-shadow { transition-property: box-shadow; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 300ms; }
+.transform { transform: var(--tw-transform); }
+.scale-105 { --tw-scale-x: 1.05; --tw-scale-y: 1.05; }

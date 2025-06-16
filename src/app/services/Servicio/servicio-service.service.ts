@@ -23,6 +23,19 @@ export class ServicioService {
     });
   }
 
+    /**
+   * Helper para obtener los headers de autenticación para carga de archivos (FormData).
+   * NO establece Content-Type, permitiendo que el navegador lo haga automáticamente
+   * como 'multipart/form-data' con el boundary correcto.
+   */
+  private getAuthHeadersForFileUpload(): HttpHeaders {
+    const token = localStorage.getItem('authToken');
+    return new HttpHeaders({
+      'Accept': 'application/json', // Aceptar JSON como respuesta
+      ...(token && { 'Authorization': `Bearer ${token}` }) // Añadir token de autorización
+    });
+  }
+
   /**
    * Obtiene todos los servicios desde el backend.
    * Ahora devuelve Observable<ApiResponse<Servicio[]>>
@@ -48,11 +61,11 @@ export class ServicioService {
     /**
    * Crea un nuevo servicio.
    */
-  createServicio(servicioData: Omit<Servicio, 'full_image_url' | 'created_at' | 'updated_at'>): Observable<ApiResponse<Servicio>> {
+  createServicio(formData: FormData): Observable<ApiResponse<Servicio>> {
     // Para enviar imágenes, necesitarás usar FormData si tu backend espera multipart/form-data.
     // Si urlImage es solo una URL, entonces JSON está bien.
     // Asumo que por ahora, urlImage es una URL o no se envía con create. Si manejas upload de imagen, necesitaremos FormData.
-    return this.http.post<ApiResponse<Servicio>>(`${this.apiUrl}/servicio/create`, servicioData, { headers: this.getHeaders() })
+    return this.http.post<ApiResponse<Servicio>>(`${this.apiUrl}/servicio/create`, formData, { headers: this.getAuthHeadersForFileUpload() })
       .pipe(
         catchError(this.handleError)
       );
@@ -61,8 +74,23 @@ export class ServicioService {
     /**
    * Actualiza un servicio existente.
    */
-  updateServicio(servicioData: Servicio): Observable<ApiResponse<Servicio>> {
-    return this.http.put<ApiResponse<Servicio>>(`${this.apiUrl}/servicio/update`, servicioData, { headers: this.getHeaders() })
+  updateServicio(formData: FormData): Observable<ApiResponse<Servicio>> {
+    return this.http.post<ApiResponse<Servicio>>(`${this.apiUrl}/servicio/update`, formData, { headers: this.getAuthHeadersForFileUpload() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+    /**
+   * Elimina un servicio por su código.
+   * Envía el código en el cuerpo de la solicitud DELETE.
+   * @param codigo El código del servicio a eliminar.
+   */
+  deleteServicio(codigo: string): Observable<ApiResponse<any>> {
+    return this.http.delete<ApiResponse<any>>(`${this.apiUrl}/servicio/delete`, { 
+        body: { codigo: codigo }, // El código se envía en el cuerpo
+        headers: this.getHeaders() 
+      })
       .pipe(
         catchError(this.handleError)
       );

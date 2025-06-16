@@ -44,10 +44,6 @@
             <div class="d-grid gap-2 mb-3">
                 <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginForm.invalid">Iniciar Sesión</button>
             </div>
-            <div class="text-center mb-3">
-                <a href="#" class="text-secondary text-decoration-none small forgot-password-link">¿Olvidaste tu
-                    contraseña?</a>
-            </div>
             
             <div *ngIf="errorMessage" class="alert alert-danger mt-3">
               {{ errorMessage }}

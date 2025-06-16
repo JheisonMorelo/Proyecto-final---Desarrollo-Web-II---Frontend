@@ -28,11 +28,12 @@ export class DashboardSidebarComponent implements OnInit, OnDestroy {
     // Categoría: Cliente
     { label: 'Mis Citas', icon: 'bi bi-calendar-check', routerLink: 'mis-citas', permission: 'ver_citas_propias', roles: ['cliente'], category: 'Mi Cuenta' },
     { label: 'Mis Pedidos', icon: 'bi bi-box-seam', routerLink: 'mis-pedidos', permission: 'ver_pedidos_propios', roles: ['cliente'], category: 'Mi Cuenta' },
-    { label: 'Mi Perfil', icon: 'bi bi-person-circle', routerLink: 'mi-perfil-client', roles: ['cliente', 'asistente_ventas', 'recepcionista', 'especialista'], category: 'Mi Cuenta' },
+    { label: 'Mi Perfil', icon: 'bi bi-person-circle', routerLink: 'mi-perfil-client', roles: ['cliente'], category: 'Mi Cuenta' },
 
     // Categoría: Recepcionista
     { label: 'Gestionar Citas', icon: 'bi bi-calendar-event', routerLink: './gestionar-citas', permission: 'ver_todas_citas', roles: ['recepcionista'], category: 'Gestión' },
     { label: 'Gestionar Servicios', icon: 'bi bi-star', routerLink: './gestionar-servicios', permission: 'ver_todos_servicios', roles: ['recepcionista'], category: 'Gestión' }, 
+    { label: 'Mi Perfil', icon: 'bi bi-person-circle', routerLink: 'mi-perfil-recepcionista', roles: ['recepcionista'], category: 'Mi Cuenta' },
     
     // Categoría: Asistente de Ventas
     { label: 'Gestionar Pedidos', icon: 'bi bi-box-arrow-right', routerLink: './gestionar-pedidos', permission: 'ver_todos_pedidos', roles: ['asistente_ventas'], category: 'Ventas' },

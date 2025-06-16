@@ -72,7 +72,7 @@ export class AuthService {
     this.userPermissionsSubject.next(authResponse.permissions);
   }
 
-  private clearAuthData(): void {
+  public clearAuthData(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('authUser');
     localStorage.removeItem('userRole');
